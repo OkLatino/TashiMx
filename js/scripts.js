@@ -72,6 +72,67 @@ const revealOnScroll = () => {
 window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('load', revealOnScroll);
 
+// ===== NUEVA FUNCIONALIDAD: Animación de números del proceso ===== 
+const timelineMarkers = document.querySelectorAll('.timeline-marker');
+const timelineItems = document.querySelectorAll('.timeline-item');
+
+// Función para activar/desactivar números según el scroll
+const animateTimelineNumbers = () => {
+    const isMobile = window.innerWidth <= 768;
+    
+    timelineItems.forEach((item, index) => {
+        const marker = item.querySelector('.timeline-marker');
+        if (!marker) return;
+        
+        const itemRect = item.getBoundingClientRect();
+        const itemTop = itemRect.top;
+        const itemBottom = itemRect.bottom;
+        const windowHeight = window.innerHeight;
+        
+        let shouldActivate = false;
+        
+        if (isMobile) {
+            // En mobile: activar cuando el item entre en el viewport desde arriba
+            shouldActivate = itemTop < windowHeight - 200;
+        } else {
+            // En desktop: activar cuando el item esté visible en el viewport
+            // Más tolerante - activa cuando el item está entre 20% y 80% del viewport
+            const activationTop = windowHeight * 0.2;
+            const activationBottom = windowHeight * 0.8;
+            
+            shouldActivate = itemTop < activationBottom && itemBottom > activationTop;
+        }
+        
+        if (shouldActivate) {
+            marker.classList.add('active');
+        } else if (!isMobile) {
+            // En desktop, desactivar cuando salga del rango
+            marker.classList.remove('active');
+        }
+        // En mobile, mantener activo una vez alcanzado
+    });
+};
+
+// Ejecutar inmediatamente al cargar la página
+const initTimelineAnimation = () => {
+    // Esperar un momento para que el DOM esté completamente renderizado
+    setTimeout(() => {
+        animateTimelineNumbers();
+    }, 100);
+};
+
+// Ejecutar en scroll, carga y resize
+window.addEventListener('scroll', animateTimelineNumbers);
+window.addEventListener('load', initTimelineAnimation);
+window.addEventListener('resize', animateTimelineNumbers);
+
+// También ejecutar cuando el documento esté listo
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTimelineAnimation);
+} else {
+    initTimelineAnimation();
+}
+
 // Counter Animation for Stats
 const statNumbers = document.querySelectorAll('.stat-number');
 
@@ -184,7 +245,7 @@ if (heroVideo) {
 }
 
 // Timeline Animation on Scroll
-const timelineItems = document.querySelectorAll('.timeline-item');
+const timelineItemsAnim = document.querySelectorAll('.timeline-item');
 
 const timelineObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -197,7 +258,7 @@ const timelineObserver = new IntersectionObserver((entries) => {
     threshold: 0.2
 });
 
-timelineItems.forEach(item => {
+timelineItemsAnim.forEach(item => {
     item.style.opacity = '0';
     item.style.transform = 'translateY(50px)';
     item.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
@@ -271,7 +332,7 @@ window.addEventListener('load', () => {
     document.body.classList.add('loaded');
 });
 
-// Gallery Lightbox Effect (Optional Enhancement)
+// Gallery Lightbox Effect
 galleryItems.forEach(item => {
     item.addEventListener('click', () => {
         const imgSrc = item.querySelector('img').src;
@@ -367,7 +428,7 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Testimonials Carousel Auto-scroll (Optional)
+// Testimonials Carousel Auto-scroll
 const testimonialCards = document.querySelectorAll('.testimonial-card');
 let currentTestimonial = 0;
 
@@ -665,4 +726,146 @@ window.addEventListener('resize', () => {
     });
 });
 
+/* ==================================================
+   CARRUSEL INFINITO PARA TESTIMONIOS Y REVIEWS
+   ================================================== */
+
+// Función para crear carrusel infinito
+function createInfiniteCarousel(containerSelector) {
+    const container = document.querySelector(containerSelector);
+    if (!container || window.innerWidth > 768) return;
+    
+    const items = Array.from(container.children);
+    if (items.length === 0) return;
+    
+    // Clonar items para crear efecto infinito
+    items.forEach(item => {
+        const clone = item.cloneNode(true);
+        container.appendChild(clone);
+    });
+    
+    // Detectar cuando llega al final y volver al inicio sin animación
+    let isScrolling;
+    container.addEventListener('scroll', () => {
+        clearTimeout(isScrolling);
+        
+        isScrolling = setTimeout(() => {
+            const maxScroll = container.scrollWidth - container.clientWidth;
+            const currentScroll = container.scrollLeft;
+            const itemWidth = items[0].offsetWidth + parseFloat(getComputedStyle(container).gap);
+            const totalOriginalWidth = itemWidth * items.length;
+            
+            // Si llegó al final (mostrando los clones), volver al inicio
+            if (currentScroll >= totalOriginalWidth) {
+                container.style.scrollBehavior = 'auto';
+                container.scrollLeft = currentScroll - totalOriginalWidth;
+                setTimeout(() => {
+                    container.style.scrollBehavior = 'smooth';
+                }, 50);
+            }
+            // Si está al inicio y hace scroll hacia atrás, ir al final
+            else if (currentScroll <= 0) {
+                container.style.scrollBehavior = 'auto';
+                container.scrollLeft = totalOriginalWidth;
+                setTimeout(() => {
+                    container.style.scrollBehavior = 'smooth';
+                }, 50);
+            }
+        }, 150);
+    });
+}
+
+// Inicializar carruseles infinitos cuando el DOM esté listo
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initInfiniteCarousels);
+} else {
+    initInfiniteCarousels();
+}
+
+function initInfiniteCarousels() {
+    // Solo en móvil
+    if (window.innerWidth <= 768) {
+        createInfiniteCarousel('.testimonials-carousel');
+        createInfiniteCarousel('.reviews-grid');
+    }
+}
+
+// Reinicializar en resize
+let resizeTimeout;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+        // Recargar página si cambia de móvil a desktop o viceversa
+        const wasMobile = document.querySelector('.testimonials-carousel').children.length > 3;
+        const isMobile = window.innerWidth <= 768;
+        
+        if (wasMobile !== isMobile) {
+            location.reload();
+        }
+    }, 250);
+});
+
+/* =========================================================
+   BOOT VIDEO DON RAMÓN
+   - Fuerza autoplay silencioso
+   - Muestra el frame cuando el navegador puede decodificar
+   - Registra causa probable si el códec no es compatible
+   ========================================================= */
+(function () {
+  const video = document.querySelector('.video-parallax .parallax-video');
+  if (!video) return;
+
+  // Asegura atributos obligatorios para autoplay en todos los navegadores
+  video.setAttribute('playsinline', '');
+  video.setAttribute('muted', '');
+  video.muted = true;
+
+  // Cuando el video tenga frames listos, lo hacemos visible
+  const show = () => {
+    video.style.opacity = '1';
+  };
+
+  video.addEventListener('loadeddata', show, { once: true });
+  video.addEventListener('canplay', show, { once: true });
+
+  // Intento de reproducción (autoplay). Si falla, explicamos por consola y habilitamos controles.
+  const tryPlay = () => {
+    const p = video.play();
+    if (p && typeof p.then === 'function') {
+      p.then(() => {
+        // Autoplay ok
+        show();
+      }).catch((err) => {
+        console.warn('[Don Ramón] Autoplay bloqueado o códec no soportado:', err);
+        // Si es autoplay bloqueado, con controles el usuario puede iniciar.
+        video.setAttribute('controls', '');
+        // No desmutear: seguiría bloqueado en varios navegadores.
+      });
+    }
+  };
+
+  // Si hay error de carga/decodificación, lo reportamos (muy típico con MP4 H.265/HEVC en Chrome/Windows)
+  video.addEventListener('error', (e) => {
+    console.error('[Don Ramón] Error al cargar/decodificar el video. Es muy probable que el códec no sea H.264/AVC.', e);
+    video.setAttribute('controls', '');   // deja iniciar manualmente si es posible
+  });
+
+  // En algunos navegadores, poner el src dinámico ayuda a inicializar correctamente
+  if (!video.currentSrc) {
+    const mp4 = video.querySelector('source[type="video/mp4"]');
+    if (mp4 && mp4.src) {
+      video.src = mp4.src;
+    }
+  }
+
+  // Arrancamos
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    tryPlay();
+  } else {
+    document.addEventListener('DOMContentLoaded', tryPlay, { once: true });
+  }
+})();
+
+
+console.log('🔄 Carruseles infinitos inicializados para móvil');
 console.log('✨ Página web de Tashi Cerámica cargada exitosamente');
