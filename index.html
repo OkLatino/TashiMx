@@ -24,8 +24,8 @@
         <li><a href="#inicio" class="nav-link">Inicio</a></li>
         <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
         <li><a href="#proceso" class="nav-link">Proceso</a></li>
-        <li><a href="#clientes" class="nav-link">Clientes</a></li>
         <li><a href="#galeria" class="nav-link">Galería</a></li>
+        <li><a href="#clientes" class="nav-link">Clientes</a></li>
         <li><a href="#testimonios" class="nav-link">Testimonios</a></li>
         <li><a href="#contacto" class="nav-link nav-link-cta">Contacto</a></li>
       </ul>
@@ -48,31 +48,37 @@
     <ul class="bubble-pills-list" role="menu">
       <li class="bubble-pill-item">
         <a href="#inicio" class="bubble-pill-link" data-color="orange" data-rotation="-8deg"
-           style="--rotation:-8deg; --pill-bg:#FF6B35; --pill-color:white;">
+           style="--rotation:-8deg; --pill-bg:#FF6B35; --pill-color:white; --pill-border:#FF6B35;">
           <span class="bubble-pill-label">Inicio</span>
         </a>
       </li>
       <li class="bubble-pill-item">
         <a href="#nosotros" class="bubble-pill-link" data-color="pink" data-rotation="8deg"
-           style="--rotation:8deg; --pill-bg:#E91E63; --pill-color:white;">
+           style="--rotation:8deg; --pill-bg:#E91E63; --pill-color:white; --pill-border:#E91E63;">
           <span class="bubble-pill-label">Nosotros</span>
         </a>
       </li>
       <li class="bubble-pill-item">
         <a href="#proceso" class="bubble-pill-link" data-color="gold" data-rotation="8deg"
-           style="--rotation:8deg; --pill-bg:#F7931E; --pill-color:white;">
+           style="--rotation:8deg; --pill-bg:#F7931E; --pill-color:white; --pill-border:#F7931E;">
           <span class="bubble-pill-label">Proceso</span>
         </a>
       </li>
       <li class="bubble-pill-item">
         <a href="#galeria" class="bubble-pill-link" data-color="blue" data-rotation="8deg"
-           style="--rotation:8deg; --pill-bg:#2196F3; --pill-color:white;">
+           style="--rotation:8deg; --pill-bg:#2196F3; --pill-color:white; --pill-border:#2196F3;">
           <span class="bubble-pill-label">Galería</span>
         </a>
       </li>
       <li class="bubble-pill-item">
+        <a href="#clientes" class="bubble-pill-link" data-color="green" data-rotation="-8deg"
+           style="--rotation:-8deg; --pill-bg:#4CAF50; --pill-color:white; --pill-border:#4CAF50;">
+          <span class="bubble-pill-label">Clientes</span>
+        </a>
+      </li>
+      <li class="bubble-pill-item">
         <a href="#contacto" class="bubble-pill-link" data-color="purple" data-rotation="-8deg"
-           style="--rotation:-8deg; --pill-bg:#9C27B0; --pill-color:white;">
+           style="--rotation:-8deg; --pill-bg:#9C27B0; --pill-color:white; --pill-border:#9C27B0;">
           <span class="bubble-pill-label">Contacto</span>
         </a>
       </li>
@@ -145,6 +151,10 @@
             <img src="assets/imagen1.jpg" alt="Cerámica Tashi 1" class="about-img about-img-1">
             <img src="assets/imagen2.jpg" alt="Cerámica Tashi 2" class="about-img about-img-2">
             <img src="assets/imagen3.jpg" alt="Cerámica Tashi 3" class="about-img about-img-3">
+            <img src="assets/Imagen23.png" alt="Botellas Mezcal Artesanales" class="about-img about-img-4">
+            <img src="assets/Imagen28.png" alt="Vaso Cocktail Cerámico" class="about-img about-img-5">
+            <img src="assets/Imagen29.png" alt="Decoración Cerámica Azul" class="about-img about-img-6">
+            <img src="assets/Fondo1.png" alt="Vasos Tiki Cerámicos" class="about-img about-img-7">
           </div>
         </div>
       </div>
@@ -219,27 +229,13 @@
           <p>Cuatro tipos de tierra —arcilla, sílice, caolín y feldespato— se unen para formar una pasta especial. Esta combinación permite dar a nuestras piezas los requisitos necesarios para la calidad</p>
         </div>
         <div class="process-intro-image">
-          <img src="assets/proceso1.png" alt="Materia Prima" class="img-float">
-        </div>
-      </div>
-
-      <!-- Galería Materia Prima -->
-      <div class="materia-prima-gallery scroll-reveal">
-        <div class="materia-gallery-grid">
-          <div class="materia-gallery-item">
-            <img src="assets/proceso1.png" alt="Proceso 1" loading="lazy">
-          </div>
-          <div class="materia-gallery-item">
-            <img src="assets/proceso2.png" alt="Proceso 2" loading="lazy">
-          </div>
-          <div class="materia-gallery-item">
-            <img src="assets/proceso3.png" alt="Proceso 3" loading="lazy">
-          </div>
-          <div class="materia-gallery-item">
-            <img src="assets/proceso4.png" alt="Proceso 4" loading="lazy">
-          </div>
-          <div class="materia-gallery-item">
-            <img src="assets/proceso5.png" alt="Proceso 5" loading="lazy">
+          <img id="carousel-image" src="assets/proceso1.png" alt="Materia Prima" class="img-float">
+          <div class="carousel-circle-nav">
+            <button class="circle-btn active" data-color="naranja" data-index="0" data-image="assets/proceso1.png" aria-label="Imagen 1"></button>
+            <button class="circle-btn" data-color="rosa" data-index="1" data-image="assets/proceso2.png" aria-label="Imagen 2"></button>
+            <button class="circle-btn" data-color="amarillo" data-index="2" data-image="assets/proceso3.png" aria-label="Imagen 3"></button>
+            <button class="circle-btn" data-color="azul" data-index="3" data-image="assets/proceso4.png" aria-label="Imagen 4"></button>
+            <button class="circle-btn" data-color="verde" data-index="4" data-image="assets/proceso5.png" aria-label="Imagen 5"></button>
           </div>
         </div>
       </div>
@@ -357,6 +353,63 @@
       </div>
 
       <div class="gallery-grid">
+        <!-- BOTELLAS -->
+        <div class="gallery-item scroll-reveal" data-category="botellas">
+          <img src="assets/Imagen19.png" alt="Botella Colorida Mexicana">
+          <div class="gallery-overlay">
+            <h3>Botella Colorida</h3>
+            <p>Arte tradicional mexicano</p>
+          </div>
+        </div>
+        <div class="gallery-item scroll-reveal" data-category="botellas">
+          <img src="assets/Imagen22.png" alt="Botella Ornamental">
+          <div class="gallery-overlay">
+            <h3>Botella Ornamental</h3>
+            <p>Diseño artesanal exclusivo</p>
+          </div>
+        </div>
+        <div class="gallery-item scroll-reveal" data-category="botellas">
+          <img src="assets/imagen24.png" alt="Botellas Tiki">
+          <div class="gallery-overlay">
+            <h3>Botellas Tiki</h3>
+            <p>Diseño tropical único</p>
+          </div>
+        </div>
+        <div class="gallery-item scroll-reveal" data-category="botellas">
+          <img src="assets/Imagen25.png" alt="Botella con Relieve">
+          <div class="gallery-overlay">
+            <h3>Botella con Relieve</h3>
+            <p>Textura artesanal</p>
+          </div>
+        </div>
+        <div class="gallery-item scroll-reveal" data-category="botellas">
+          <img src="assets/Imagen26.png" alt="Botella Calavera">
+          <div class="gallery-overlay">
+            <h3>Botella Calavera</h3>
+            <p>Diseño urbano moderno</p>
+          </div>
+        </div>
+        <div class="gallery-item scroll-reveal" data-category="botellas">
+          <img src="assets/Imagen27.png" alt="Botella Tashi Premium">
+          <div class="gallery-overlay">
+            <h3>Botella Tashi Premium</h3>
+            <p>Edición especial negra</p>
+          </div>
+        </div>
+        <div class="gallery-item scroll-reveal" data-category="botellas">
+          <img src="assets/Imagen32.png" alt="Botella Azteca">
+          <div class="gallery-overlay">
+            <h3>Botella Azteca</h3>
+            <p>Diseño prehispánico</p>
+          </div>
+        </div>
+        <div class="gallery-item scroll-reveal" data-category="botellas">
+          <img src="assets/Imagen34.png" alt="Botella Cactus">
+          <div class="gallery-overlay">
+            <h3>Botella Cactus</h3>
+            <p>Inspiración mexicana</p>
+          </div>
+        </div>
         <div class="gallery-item scroll-reveal" data-category="botellas">
           <img src="assets/imagen1.jpg" alt="Botella Decorativa 1">
           <div class="gallery-overlay">
@@ -369,13 +422,6 @@
           <div class="gallery-overlay">
             <h3>Botella Premium</h3>
             <p>Diseño exclusivo</p>
-          </div>
-        </div>
-        <div class="gallery-item scroll-reveal" data-category="decoracion">
-          <img src="assets/imagen3.jpg" alt="Marco Decorativo">
-          <div class="gallery-overlay">
-            <h3>Marco Artesanal</h3>
-            <p>Cerámica decorativa</p>
           </div>
         </div>
         <div class="gallery-item scroll-reveal" data-category="botellas">
@@ -406,6 +452,73 @@
             <p>Artesanía mexicana</p>
           </div>
         </div>
+
+        <!-- DECORACIÓN -->
+        <div class="gallery-item scroll-reveal" data-category="decoracion">
+          <img src="assets/Imagen20.png" alt="Marco Circular Bodas">
+          <div class="gallery-overlay">
+            <h3>Marco Circular</h3>
+            <p>Perfecto para eventos y bodas</p>
+          </div>
+        </div>
+        <div class="gallery-item scroll-reveal" data-category="decoracion">
+          <img src="assets/Imagen29.png" alt="Vaso Cocktail">
+          <div class="gallery-overlay">
+            <h3>Vaso Cocktail</h3>
+            <p>Diseño tropical escamado</p>
+          </div>
+        </div>
+        <div class="gallery-item scroll-reveal" data-category="decoracion">
+          <img src="assets/Imagen31.png" alt="Decoración Lucha Libre">
+          <div class="gallery-overlay">
+            <h3>Decoración Lucha Libre</h3>
+            <p>Arte mexicano tradicional</p>
+          </div>
+        </div>
+        <div class="gallery-item scroll-reveal" data-category="decoracion">
+          <img src="assets/Imagen33.png" alt="Marco Día de Muertos">
+          <div class="gallery-overlay">
+            <h3>Marco Día de Muertos</h3>
+            <p>Tradición mexicana</p>
+          </div>
+        </div>
+        <div class="gallery-item scroll-reveal" data-category="decoracion">
+          <img src="assets/Imagen36.png" alt="Marco Agave">
+          <div class="gallery-overlay">
+            <h3>Marco Agave</h3>
+            <p>Diseño campo tequilero</p>
+          </div>
+        </div>
+        <div class="gallery-item scroll-reveal" data-category="decoracion">
+          <img src="assets/imagen3.jpg" alt="Marco Decorativo">
+          <div class="gallery-overlay">
+            <h3>Marco Artesanal</h3>
+            <p>Cerámica decorativa</p>
+          </div>
+        </div>
+        <div class="gallery-item scroll-reveal" data-category="decoracion">
+          <img src="assets/imagen15.png" alt="Arte Explosivo">
+          <div class="gallery-overlay">
+            <h3>Arte Abstracto</h3>
+            <p>Diseño moderno</p>
+          </div>
+        </div>
+
+        <!-- VAJILLA -->
+        <div class="gallery-item scroll-reveal" data-category="vajilla">
+          <img src="assets/Imagen21.png" alt="Set Jarra y Vasos">
+          <div class="gallery-overlay">
+            <h3>Set Jarra y Vasos</h3>
+            <p>Conjunto artesanal completo</p>
+          </div>
+        </div>
+        <div class="gallery-item scroll-reveal" data-category="vajilla">
+          <img src="assets/Imagen35.png" alt="Set Premium Marco">
+          <div class="gallery-overlay">
+            <h3>Set Premium</h3>
+            <p>Marco con vajilla decorativa</p>
+          </div>
+        </div>
         <div class="gallery-item scroll-reveal" data-category="vajilla">
           <img src="assets/imagen14.png" alt="Vajilla Completa">
           <div class="gallery-overlay">
@@ -418,13 +531,6 @@
           <div class="gallery-overlay">
             <h3>Taza Calavera</h3>
             <p>Arte mexicano</p>
-          </div>
-        </div>
-        <div class="gallery-item scroll-reveal" data-category="decoracion">
-          <img src="assets/imagen15.png" alt="Arte Explosivo">
-          <div class="gallery-overlay">
-            <h3>Arte Abstracto</h3>
-            <p>Diseño moderno</p>
           </div>
         </div>
       </div>
@@ -447,78 +553,90 @@
 
       <div class="clientes-grid scroll-reveal">
         <div class="cliente-item">
-          <img src="assets/cliente1.png" alt="Oro de Oaxaca" loading="lazy">
+          <img src="assets/cliente1.png" alt="Mundo Oro" loading="lazy">
           <div class="cliente-overlay">
-            <h4>Oro de Oaxaca</h4>
+            <h3>Mundo Oro</h3>
+            <p>Botellas premium con diseños dorados elegantes sobre cerámica blanca y negra, representando el lujo y la distinción del tequila</p>
           </div>
         </div>
         <div class="cliente-item">
           <img src="assets/cliente2.png" alt="Los Nahuales" loading="lazy">
           <div class="cliente-overlay">
-            <h4>Los Nahuales</h4>
+            <h3>Los Nahuales</h3>
+            <p>Colección de botellas negras con diseños coloridos vibrantes inspirados en la mitología mexicana y tradiciones ancestrales</p>
           </div>
         </div>
         <div class="cliente-item">
           <img src="assets/cliente3.png" alt="Don Valerio Ceramic Edition" loading="lazy">
           <div class="cliente-overlay">
-            <h4>Don Valerio Ceramic Edition</h4>
+            <h3>Don Valerio Ceramic Edition</h3>
+            <p>Botella elegante en blanco con diseños ornamentales en negro y azul, edición especial que combina tradición y sofisticación</p>
           </div>
         </div>
         <div class="cliente-item">
           <img src="assets/cliente4.png" alt="Legacy by Real" loading="lazy">
           <div class="cliente-overlay">
-            <h4>Legacy by Real</h4>
+            <h3>Legacy by Real</h3>
+            <p>Colección premium con calaveras de Día de Muertos y diseños artísticos multicolor, celebrando la vida y las tradiciones mexicanas</p>
           </div>
         </div>
         <div class="cliente-item">
           <img src="assets/cliente5.png" alt="Dinastía Real Cerámicas" loading="lazy">
           <div class="cliente-overlay">
-            <h4>Dinastía Real Cerámicas</h4>
+            <h3>Dinastía Real Cerámicas</h3>
+            <p>Serie completa de botellas con diseños geométricos y ornamentales únicos, representando la realeza del tequila mexicano</p>
           </div>
         </div>
         <div class="cliente-item">
-          <img src="assets/cliente6.png" alt="Amaro Ceramic Editions" loading="lazy">
+          <img src="assets/cliente6.png" alt="Premium Line by Real" loading="lazy">
           <div class="cliente-overlay">
-            <h4>Amaro Ceramic Editions</h4>
+            <h3>Premium Line by Real</h3>
+            <p>Línea premium con diseños talavera multicolor vibrantes en colores turquesa, rojo, coral y negro con detalles dorados</p>
           </div>
         </div>
         <div class="cliente-item">
-          <img src="assets/cliente7.png" alt="Premium Line by Real" loading="lazy">
+          <img src="assets/cliente7.png" alt="Maxino Imperio" loading="lazy">
           <div class="cliente-overlay">
-            <h4>Premium Line by Real</h4>
+            <h3>Maxino Imperio</h3>
+            <p>Botellas con patrones geométricos sofisticados en colores elegantes, diseño que refleja distinción y calidad imperial</p>
           </div>
         </div>
         <div class="cliente-item">
-          <img src="assets/cliente8.png" alt="Real Edición Especial" loading="lazy">
+          <img src="assets/cliente8.png" alt="Dulce Amigura" loading="lazy">
           <div class="cliente-overlay">
-            <h4>Real Edición Especial</h4>
+            <h3>Dulce Amigura</h3>
+            <p>Colección artística con diseños variados y creativos en múltiples estilos, cada botella es una pieza única de arte cerámico</p>
           </div>
         </div>
       </div>
 
       <div class="clientes-grid scroll-reveal">
         <div class="cliente-item">
-          <img src="assets/cliente9.png" alt="Dolce Amore" loading="lazy">
+          <img src="assets/cliente9.png" alt="Amor Mío" loading="lazy">
           <div class="cliente-overlay">
-            <h4>Dolce Amore</h4>
+            <h3>Amor Mío</h3>
+            <p>Botellas geométricas en colores elegantes con diseños ornamentales, expresando pasión y amor por el arte cerámico mexicano</p>
           </div>
         </div>
         <div class="cliente-item">
-          <img src="assets/cliente10.png" alt="AKU Tequila" loading="lazy">
+          <img src="assets/cliente10.png" alt="Arte Editions" loading="lazy">
           <div class="cliente-overlay">
-            <h4>AKU Tequila</h4>
+            <h3>Arte Editions</h3>
+            <p>Ediciones especiales en colores rosa, blanco, verde y azul con diseños geométricos modernos y detalles dorados elegantes</p>
           </div>
         </div>
         <div class="cliente-item">
-          <img src="assets/cliente11.png" alt="Estate Encido" loading="lazy">
+          <img src="assets/cliente11.png" alt="Don Ramón" loading="lazy">
           <div class="cliente-overlay">
-            <h4>Estate Encido</h4>
+            <h3>Don Ramón</h3>
+            <p>Botella icónica con diseño azul y dorado sobre fondo blanco, edición especial que representa refinamiento y tradición en perfecta armonía</p>
           </div>
         </div>
         <div class="cliente-item">
-          <img src="assets/cliente12.png" alt="Don Otelo" loading="lazy">
+          <img src="assets/cliente12.png" alt="Oro de Oaxaca" loading="lazy">
           <div class="cliente-overlay">
-            <h4>Don Otelo</h4>
+            <h3>Oro de Oaxaca</h3>
+            <p>Botellas premium con diseños dorados exclusivos en blanco y negro que representan la riqueza cultural y tradiciones oaxaqueñas</p>
           </div>
         </div>
       </div>

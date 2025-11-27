@@ -1,44 +1,52 @@
+// ========================================
+// DOM CONTENT LOADED - INICIO
+// ========================================
+
+document.addEventListener('DOMContentLoaded', function() {
+
 // Navbar scroll effect
 const navbar = document.getElementById('navbar');
 const navToggle = document.getElementById('navToggle');
 const navMenu = document.getElementById('navMenu');
 const navLinks = document.querySelectorAll('.nav-link');
 
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
+if (navbar) {
+  window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+      } else {
+          navbar.classList.remove('scrolled');
+      }
+  });
+}
 
 // Mobile Navigation Toggle
-navToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    
-    // Animate hamburger
-    const spans = navToggle.querySelectorAll('span');
-    if (navMenu.classList.contains('active')) {
-        spans[0].style.transform = 'rotate(45deg) translateY(10px)';
-        spans[1].style.opacity = '0';
-        spans[2].style.transform = 'rotate(-45deg) translateY(-10px)';
-    } else {
-        spans[0].style.transform = 'none';
-        spans[1].style.opacity = '1';
-        spans[2].style.transform = 'none';
-    }
-});
+if (navToggle && navMenu) {
+  navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      
+      const spans = navToggle.querySelectorAll('span');
+      if (navMenu.classList.contains('active')) {
+          spans[0].style.transform = 'rotate(45deg) translateY(10px)';
+          spans[1].style.opacity = '0';
+          spans[2].style.transform = 'rotate(-45deg) translateY(-10px)';
+      } else {
+          spans[0].style.transform = 'none';
+          spans[1].style.opacity = '1';
+          spans[2].style.transform = 'none';
+      }
+  });
 
-// Close mobile menu when clicking on a link
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        const spans = navToggle.querySelectorAll('span');
-        spans[0].style.transform = 'none';
-        spans[1].style.opacity = '1';
-        spans[2].style.transform = 'none';
-    });
-});
+  navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+          navMenu.classList.remove('active');
+          const spans = navToggle.querySelectorAll('span');
+          spans[0].style.transform = 'none';
+          spans[1].style.opacity = '1';
+          spans[2].style.transform = 'none';
+      });
+  });
+}
 
 // Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -72,11 +80,10 @@ const revealOnScroll = () => {
 window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('load', revealOnScroll);
 
-// ===== NUEVA FUNCIONALIDAD: Animación de números del proceso ===== 
+// Animación de números del proceso
 const timelineMarkers = document.querySelectorAll('.timeline-marker');
 const timelineItems = document.querySelectorAll('.timeline-item');
 
-// Función para activar/desactivar números según el scroll
 const animateTimelineNumbers = () => {
     const isMobile = window.innerWidth <= 768;
     
@@ -92,54 +99,39 @@ const animateTimelineNumbers = () => {
         let shouldActivate = false;
         
         if (isMobile) {
-            // En mobile: activar cuando el item entre en el viewport desde arriba
             shouldActivate = itemTop < windowHeight - 200;
         } else {
-            // En desktop: activar cuando el item esté visible en el viewport
-            // Más tolerante - activa cuando el item está entre 20% y 80% del viewport
             const activationTop = windowHeight * 0.2;
             const activationBottom = windowHeight * 0.8;
-            
             shouldActivate = itemTop < activationBottom && itemBottom > activationTop;
         }
         
         if (shouldActivate) {
             marker.classList.add('active');
         } else if (!isMobile) {
-            // En desktop, desactivar cuando salga del rango
             marker.classList.remove('active');
         }
-        // En mobile, mantener activo una vez alcanzado
     });
 };
 
-// Ejecutar inmediatamente al cargar la página
 const initTimelineAnimation = () => {
-    // Esperar un momento para que el DOM esté completamente renderizado
     setTimeout(() => {
         animateTimelineNumbers();
     }, 100);
 };
 
-// Ejecutar en scroll, carga y resize
 window.addEventListener('scroll', animateTimelineNumbers);
 window.addEventListener('load', initTimelineAnimation);
 window.addEventListener('resize', animateTimelineNumbers);
-
-// También ejecutar cuando el documento esté listo
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initTimelineAnimation);
-} else {
-    initTimelineAnimation();
-}
+initTimelineAnimation();
 
 // Counter Animation for Stats
 const statNumbers = document.querySelectorAll('.stat-number');
 
 const animateCounter = (element) => {
     const target = parseInt(element.getAttribute('data-target'));
-    const duration = 2000; // 2 seconds
-    const increment = target / (duration / 16); // 60 FPS
+    const duration = 2000;
+    const increment = target / (duration / 16);
     let current = 0;
     
     const updateCounter = () => {
@@ -155,7 +147,7 @@ const animateCounter = (element) => {
     updateCounter();
 };
 
-const observerOptions = {
+const observerOptionsStats = {
     threshold: 0.5
 };
 
@@ -166,47 +158,10 @@ const counterObserver = new IntersectionObserver((entries) => {
             entry.target.classList.add('counted');
         }
     });
-}, observerOptions);
+}, observerOptionsStats);
 
 statNumbers.forEach(stat => {
     counterObserver.observe(stat);
-});
-
-// Gallery Filter
-const filterButtons = document.querySelectorAll('.filter-btn');
-const galleryItems = document.querySelectorAll('.gallery-item');
-
-filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        // Remove active class from all buttons
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        // Add active class to clicked button
-        button.classList.add('active');
-        
-        const filterValue = button.getAttribute('data-filter');
-        
-        galleryItems.forEach(item => {
-            if (filterValue === 'all') {
-                item.classList.remove('hide');
-                setTimeout(() => {
-                    item.style.display = 'block';
-                }, 10);
-            } else {
-                const itemCategory = item.getAttribute('data-category');
-                if (itemCategory === filterValue) {
-                    item.classList.remove('hide');
-                    setTimeout(() => {
-                        item.style.display = 'block';
-                    }, 10);
-                } else {
-                    item.classList.add('hide');
-                    setTimeout(() => {
-                        item.style.display = 'none';
-                    }, 300);
-                }
-            }
-        });
-    });
 });
 
 // Parallax Effect for Video
@@ -272,7 +227,6 @@ if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
-        // Get form data
         const formData = {
             nombre: document.getElementById('nombre').value,
             apellido: document.getElementById('apellido').value,
@@ -280,13 +234,8 @@ if (contactForm) {
             mensaje: document.getElementById('mensaje').value
         };
         
-        // Here you would typically send the data to a server
         console.log('Form submitted:', formData);
-        
-        // Show success message
         alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.');
-        
-        // Reset form
         contactForm.reset();
     });
 }
@@ -294,20 +243,22 @@ if (contactForm) {
 // Scroll to Top Button
 const scrollToTopBtn = document.getElementById('scrollToTop');
 
-window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 300) {
-        scrollToTopBtn.classList.add('visible');
-    } else {
-        scrollToTopBtn.classList.remove('visible');
-    }
-});
+if (scrollToTopBtn) {
+  window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+          scrollToTopBtn.classList.add('visible');
+      } else {
+          scrollToTopBtn.classList.remove('visible');
+      }
+  });
 
-scrollToTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
+  scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+      });
+  });
+}
 
 // Lazy Loading Images
 const images = document.querySelectorAll('img[data-src]');
@@ -327,91 +278,7 @@ images.forEach(img => {
     imageObserver.observe(img);
 });
 
-// Add loading animation
-window.addEventListener('load', () => {
-    document.body.classList.add('loaded');
-});
-
-// Gallery Lightbox Effect
-galleryItems.forEach(item => {
-    item.addEventListener('click', () => {
-        const imgSrc = item.querySelector('img').src;
-        const lightbox = document.createElement('div');
-        lightbox.className = 'lightbox';
-        lightbox.innerHTML = `
-            <div class="lightbox-content">
-                <span class="lightbox-close">&times;</span>
-                <img src="${imgSrc}" alt="Gallery Image">
-            </div>
-        `;
-        document.body.appendChild(lightbox);
-        
-        // Add styles dynamically
-        lightbox.style.cssText = `
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            animation: fadeIn 0.3s ease-out;
-        `;
-        
-        const lightboxContent = lightbox.querySelector('.lightbox-content');
-        lightboxContent.style.cssText = `
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-        `;
-        
-        const lightboxImg = lightbox.querySelector('img');
-        lightboxImg.style.cssText = `
-            max-width: 100%;
-            max-height: 90vh;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-        `;
-        
-        const closeBtn = lightbox.querySelector('.lightbox-close');
-        closeBtn.style.cssText = `
-            position: absolute;
-            top: -40px;
-            right: 0;
-            color: white;
-            font-size: 40px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        `;
-        
-        closeBtn.addEventListener('mouseover', () => {
-            closeBtn.style.color = '#D2691E';
-        });
-        
-        closeBtn.addEventListener('mouseout', () => {
-            closeBtn.style.color = 'white';
-        });
-        
-        closeBtn.addEventListener('click', () => {
-            lightbox.style.animation = 'fadeOut 0.3s ease-out';
-            setTimeout(() => {
-                lightbox.remove();
-            }, 300);
-        });
-        
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
-                lightbox.style.animation = 'fadeOut 0.3s ease-out';
-                setTimeout(() => {
-                    lightbox.remove();
-                }, 300);
-            }
-        });
-    });
-});
+document.body.classList.add('loaded');
 
 // Add keyframe animations dynamically
 const style = document.createElement('style');
@@ -446,7 +313,6 @@ function highlightTestimonial() {
     currentTestimonial = (currentTestimonial + 1) % testimonialCards.length;
 }
 
-// Auto-rotate testimonials every 5 seconds
 if (testimonialCards.length > 0) {
     setInterval(highlightTestimonial, 5000);
 }
@@ -456,12 +322,18 @@ const formInputs = document.querySelectorAll('.form-group input, .form-group tex
 
 formInputs.forEach(input => {
     input.addEventListener('focus', () => {
-        input.parentElement.querySelector('label').style.color = 'var(--accent-color)';
+        const label = input.parentElement.querySelector('label');
+        if (label) {
+          label.style.color = 'var(--accent-color)';
+        }
     });
     
     input.addEventListener('blur', () => {
         if (!input.value) {
-            input.parentElement.querySelector('label').style.color = 'var(--primary-color)';
+            const label = input.parentElement.querySelector('label');
+            if (label) {
+              label.style.color = 'var(--primary-color)';
+            }
         }
     });
 });
@@ -479,12 +351,10 @@ function debounce(func, wait = 10) {
     };
 }
 
-// Apply debounce to scroll events
 const debouncedReveal = debounce(revealOnScroll);
 window.removeEventListener('scroll', revealOnScroll);
 window.addEventListener('scroll', debouncedReveal);
 
-// Console welcome message
 console.log('%c¡Bienvenido a Tashi Cerámica!', 'color: #D2691E; font-size: 20px; font-weight: bold;');
 console.log('%cMás que una botella, creamos arte', 'color: #8B4513; font-size: 14px; font-style: italic;');
 
@@ -493,7 +363,6 @@ const navLogo = document.querySelector('.logo-interactive');
 const sectionBadges = document.querySelectorAll('.logo-section-badge');
 const accentLogos = document.querySelectorAll('.logo-accent-small');
 
-// Nav logo click - scroll to top
 if (navLogo) {
     navLogo.addEventListener('click', () => {
         window.scrollTo({
@@ -515,7 +384,6 @@ const badgeObserver = new IntersectionObserver((entries) => {
 sectionBadges.forEach(badge => {
     badgeObserver.observe(badge);
     
-    // Add click interaction
     badge.addEventListener('click', () => {
         badge.style.transform = 'scale(1.3) rotate(720deg)';
         setTimeout(() => {
@@ -560,21 +428,6 @@ logoAnimations.textContent = `
 `;
 document.head.appendChild(logoAnimations);
 
-// Add entrance animation to hero content
-window.addEventListener('load', () => {
-    const heroContent = document.querySelector('.hero-content');
-    if (heroContent) {
-        heroContent.style.opacity = '0';
-        heroContent.style.transform = 'translateY(30px)';
-        
-        setTimeout(() => {
-            heroContent.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
-            heroContent.style.opacity = '1';
-            heroContent.style.transform = 'translateY(0)';
-        }, 100);
-    }
-});
-
 // Interactive hover effects for feature cards
 const featureCards = document.querySelectorAll('.feature-card');
 
@@ -607,11 +460,7 @@ const createProgressBar = () => {
 
 createProgressBar();
 
-/* ===================================
-   BUBBLE MENU JAVASCRIPT
-   Funcionalidad del menú interactivo
-   =================================== */
-
+// BUBBLE MENU
 class BubbleMenu {
     constructor(options = {}) {
         this.isOpen = false;
@@ -619,34 +468,28 @@ class BubbleMenu {
         this.overlay = document.querySelector('.bubble-menu-overlay');
         this.pills = document.querySelectorAll('.bubble-pill-link');
         this.staggerDelay = options.staggerDelay || 120;
-        
         this.init();
     }
 
     init() {
         if (!this.toggle || !this.overlay) return;
 
-        // Event listener para el botón toggle
         this.toggle.addEventListener('click', () => this.toggleMenu());
 
-        // Event listener para cerrar al hacer click en el overlay
         this.overlay.addEventListener('click', (e) => {
             if (e.target === this.overlay) {
                 this.closeMenu();
             }
         });
 
-        // Event listener para cerrar con ESC
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && this.isOpen) {
                 this.closeMenu();
             }
         });
 
-        // Event listeners para los links
         this.pills.forEach(pill => {
             pill.addEventListener('click', (e) => {
-                // Si el href es una ancla interna, cerrar el menú
                 const href = pill.getAttribute('href');
                 if (href && href.startsWith('#')) {
                     setTimeout(() => this.closeMenu(), 300);
@@ -669,7 +512,6 @@ class BubbleMenu {
         this.overlay.classList.add('active');
         document.body.style.overflow = 'hidden';
 
-        // Animar las pills con stagger
         this.pills.forEach((pill, index) => {
             setTimeout(() => {
                 pill.classList.add('show');
@@ -682,35 +524,24 @@ class BubbleMenu {
         this.toggle.classList.remove('open');
         document.body.style.overflow = '';
 
-        // Remover clase show de las pills
         this.pills.forEach(pill => {
             pill.classList.remove('show');
         });
 
-        // Esperar a que termine la animación para ocultar el overlay
         setTimeout(() => {
             this.overlay.classList.remove('active');
         }, 300);
     }
 }
 
-// Inicializar el Bubble Menu cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', () => {
-    // Remover el navbar original si existe
-    const originalNav = document.querySelector('.navbar');
-    if (originalNav) {
-        originalNav.style.display = 'none';
-    }
+const originalNav = document.querySelector('.navbar');
+if (originalNav) {
+    originalNav.style.display = 'none';
+}
 
-    // Inicializar el bubble menu
-    const bubbleMenu = new BubbleMenu({
-        staggerDelay: 120 // Delay entre cada burbuja (ms)
-    });
+const bubbleMenu = new BubbleMenu({ staggerDelay: 120 });
+console.log('🫧 Bubble Menu inicializado');
 
-    console.log('🫧 Bubble Menu inicializado');
-});
-
-// Ajustar rotación en resize para mobile
 window.addEventListener('resize', () => {
     const pills = document.querySelectorAll('.bubble-pill-link');
     const isMobile = window.innerWidth < 900;
@@ -719,18 +550,13 @@ window.addEventListener('resize', () => {
         if (isMobile) {
             pill.style.setProperty('--rotation', '0deg');
         } else {
-            // Restaurar rotación original del atributo data
             const rotation = pill.getAttribute('data-rotation') || '0deg';
             pill.style.setProperty('--rotation', rotation);
         }
     });
 });
 
-/* ==================================================
-   CARRUSEL INFINITO PARA TESTIMONIOS Y REVIEWS
-   ================================================== */
-
-// Función para crear carrusel infinito
+// CARRUSEL INFINITO PARA TESTIMONIOS
 function createInfiniteCarousel(containerSelector) {
     const container = document.querySelector(containerSelector);
     if (!container || window.innerWidth > 768) return;
@@ -738,13 +564,11 @@ function createInfiniteCarousel(containerSelector) {
     const items = Array.from(container.children);
     if (items.length === 0) return;
     
-    // Clonar items para crear efecto infinito
     items.forEach(item => {
         const clone = item.cloneNode(true);
         container.appendChild(clone);
     });
     
-    // Detectar cuando llega al final y volver al inicio sin animación
     let isScrolling;
     container.addEventListener('scroll', () => {
         clearTimeout(isScrolling);
@@ -755,7 +579,6 @@ function createInfiniteCarousel(containerSelector) {
             const itemWidth = items[0].offsetWidth + parseFloat(getComputedStyle(container).gap);
             const totalOriginalWidth = itemWidth * items.length;
             
-            // Si llegó al final (mostrando los clones), volver al inicio
             if (currentScroll >= totalOriginalWidth) {
                 container.style.scrollBehavior = 'auto';
                 container.scrollLeft = currentScroll - totalOriginalWidth;
@@ -763,7 +586,6 @@ function createInfiniteCarousel(containerSelector) {
                     container.style.scrollBehavior = 'smooth';
                 }, 50);
             }
-            // Si está al inicio y hace scroll hacia atrás, ir al final
             else if (currentScroll <= 0) {
                 container.style.scrollBehavior = 'auto';
                 container.scrollLeft = totalOriginalWidth;
@@ -775,52 +597,44 @@ function createInfiniteCarousel(containerSelector) {
     });
 }
 
-// Inicializar carruseles infinitos cuando el DOM esté listo
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initInfiniteCarousels);
-} else {
-    initInfiniteCarousels();
-}
-
 function initInfiniteCarousels() {
-    // Solo en móvil
     if (window.innerWidth <= 768) {
         createInfiniteCarousel('.testimonials-carousel');
         createInfiniteCarousel('.reviews-grid');
     }
 }
 
-// Reinicializar en resize
+initInfiniteCarousels();
+
 let resizeTimeout;
 window.addEventListener('resize', () => {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
-        // Recargar página si cambia de móvil a desktop o viceversa
-        const wasMobile = document.querySelector('.testimonials-carousel').children.length > 3;
-        const isMobile = window.innerWidth <= 768;
-        
-        if (wasMobile !== isMobile) {
-            location.reload();
+        const testimonialCarousel = document.querySelector('.testimonials-carousel');
+        if (testimonialCarousel) {
+          const wasMobile = testimonialCarousel.children.length > 3;
+          const isMobile = window.innerWidth <= 768;
+          
+          if (wasMobile !== isMobile) {
+              location.reload();
+          }
         }
     }, 250);
 });
 
-/* =========================================================
-   BOOT VIDEO DON RAMÓN
-   - Fuerza autoplay silencioso
-   - Muestra el frame cuando el navegador puede decodificar
-   - Registra causa probable si el códec no es compatible
-   ========================================================= */
+console.log('🔄 Carruseles infinitos inicializados para móvil');
+
+}); // FIN DE DOMContentLoaded
+
+// BOOT VIDEO DON RAMÓN
 (function () {
   const video = document.querySelector('.video-parallax .parallax-video');
   if (!video) return;
 
-  // Asegura atributos obligatorios para autoplay en todos los navegadores
   video.setAttribute('playsinline', '');
   video.setAttribute('muted', '');
   video.muted = true;
 
-  // Cuando el video tenga frames listos, lo hacemos visible
   const show = () => {
     video.style.opacity = '1';
   };
@@ -828,29 +642,23 @@ window.addEventListener('resize', () => {
   video.addEventListener('loadeddata', show, { once: true });
   video.addEventListener('canplay', show, { once: true });
 
-  // Intento de reproducción (autoplay). Si falla, explicamos por consola y habilitamos controles.
   const tryPlay = () => {
     const p = video.play();
     if (p && typeof p.then === 'function') {
       p.then(() => {
-        // Autoplay ok
         show();
       }).catch((err) => {
         console.warn('[Don Ramón] Autoplay bloqueado o códec no soportado:', err);
-        // Si es autoplay bloqueado, con controles el usuario puede iniciar.
         video.setAttribute('controls', '');
-        // No desmutear: seguiría bloqueado en varios navegadores.
       });
     }
   };
 
-  // Si hay error de carga/decodificación, lo reportamos (muy típico con MP4 H.265/HEVC en Chrome/Windows)
   video.addEventListener('error', (e) => {
-    console.error('[Don Ramón] Error al cargar/decodificar el video. Es muy probable que el códec no sea H.264/AVC.', e);
-    video.setAttribute('controls', '');   // deja iniciar manualmente si es posible
+    console.error('[Don Ramón] Error al cargar/decodificar el video.', e);
+    video.setAttribute('controls', '');
   });
 
-  // En algunos navegadores, poner el src dinámico ayuda a inicializar correctamente
   if (!video.currentSrc) {
     const mp4 = video.querySelector('source[type="video/mp4"]');
     if (mp4 && mp4.src) {
@@ -858,14 +666,368 @@ window.addEventListener('resize', () => {
     }
   }
 
-  // Arrancamos
-  if (document.readyState === 'complete' || document.readyState === 'interactive') {
-    tryPlay();
-  } else {
-    document.addEventListener('DOMContentLoaded', tryPlay, { once: true });
-  }
+  tryPlay();
 })();
 
+// ===== SISTEMA DE FILTRADO DE GALERÍA =====
+document.addEventListener('DOMContentLoaded', () => {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    
+    console.log('🎨 Filtros encontrados:', filterBtns.length);
+    console.log('🖼️ Gallery items encontrados:', galleryItems.length);
+    
+    if (filterBtns.length > 0 && galleryItems.length > 0) {
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filterValue = btn.getAttribute('data-filter');
+                console.log('🔍 Filtrando por:', filterValue);
+                
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                galleryItems.forEach(item => {
+                    const category = item.getAttribute('data-category');
+                    
+                    if (filterValue === 'all' || category === filterValue) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 10);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.8)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+    }
+});
 
-console.log('🔄 Carruseles infinitos inicializados para móvil');
-console.log('✨ Página web de Tashi Cerámica cargada exitosamente');
+// ===== LIGHTBOX CON TÍTULO Y DESCRIPCIÓN =====
+class Lightbox {
+  constructor() {
+    this.currentIndex = 0;
+    this.images = [];
+    this.init();
+  }
+
+  init() {
+    this.disableOldLightbox();
+    this.createLightboxHTML();
+    this.initGallery();
+    this.initClientes();
+    this.setupEventListeners();
+  }
+
+  disableOldLightbox() {
+    const oldGalleryItems = document.querySelectorAll('.gallery-item');
+    oldGalleryItems.forEach(item => {
+      const newItem = item.cloneNode(true);
+      item.parentNode.replaceChild(newItem, item);
+    });
+
+    const oldClienteItems = document.querySelectorAll('.cliente-item');
+    oldClienteItems.forEach(item => {
+      const newItem = item.cloneNode(true);
+      item.parentNode.replaceChild(newItem, item);
+    });
+  }
+
+  createLightboxHTML() {
+    const oldLightbox = document.querySelector('.lightbox');
+    if (oldLightbox) {
+      oldLightbox.remove();
+    }
+
+    const modal = document.createElement('div');
+    modal.className = 'lightbox-modal';
+    modal.id = 'lightbox';
+
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'lightbox-close';
+    closeBtn.id = 'lightbox-close';
+    closeBtn.textContent = '×';
+
+    const prevBtn = document.createElement('button');
+    prevBtn.className = 'lightbox-nav lightbox-prev';
+    prevBtn.id = 'lightbox-prev';
+    prevBtn.textContent = '‹';
+
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'lightbox-nav lightbox-next';
+    nextBtn.id = 'lightbox-next';
+    nextBtn.textContent = '›';
+
+    const content = document.createElement('div');
+    content.className = 'lightbox-content';
+
+    const img = document.createElement('img');
+    img.className = 'lightbox-image';
+    img.id = 'lightbox-image';
+    img.src = '';
+    img.alt = '';
+
+    const info = document.createElement('div');
+    info.className = 'lightbox-info';
+
+    const title = document.createElement('h3');
+    title.id = 'lightbox-title';
+
+    const description = document.createElement('p');
+    description.id = 'lightbox-description';
+
+    info.appendChild(title);
+    info.appendChild(description);
+    content.appendChild(img);
+    content.appendChild(info);
+    modal.appendChild(closeBtn);
+    modal.appendChild(prevBtn);
+    modal.appendChild(nextBtn);
+    modal.appendChild(content);
+
+    document.body.appendChild(modal);
+  }
+
+  initGallery() {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    console.log('✨ Inicializando lightbox para', galleryItems.length, 'items de galería');
+    
+    galleryItems.forEach((item, index) => {
+        const img = item.querySelector('img');
+        const overlay = item.querySelector('.gallery-overlay');
+        let title = '';
+        let description = '';
+        
+        if (overlay) {
+            const h3 = overlay.querySelector('h3');
+            const p = overlay.querySelector('p');
+            title = h3 ? h3.textContent.trim() : '';
+            description = p ? p.textContent.trim() : '';
+        }
+        
+        if (img) {
+            this.images.push({
+                img: img.src,
+                title: title,
+                description: description
+            });
+            
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.open(index);
+            });
+        }
+    });
+  }
+
+  initClientes() {
+    const clienteItems = document.querySelectorAll('.cliente-item');
+    const startIndex = this.images.length;
+    
+    clienteItems.forEach((item, index) => {
+        const img = item.querySelector('img');
+        const overlay = item.querySelector('.cliente-overlay');
+        let title = '';
+        let description = '';
+        
+        if (overlay) {
+            const h3 = overlay.querySelector('h3');
+            const p = overlay.querySelector('p');
+            title = h3 ? h3.textContent.trim() : '';
+            description = p ? p.textContent.trim() : '';
+        }
+        
+        if (img) {
+            this.images.push({
+                img: img.src,
+                title: title,
+                description: description
+            });
+            
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.open(startIndex + index);
+            });
+        }
+    });
+  }
+
+  open(index) {
+    this.currentIndex = index;
+    this.updateLightbox();
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  close() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  next() {
+    this.currentIndex = (this.currentIndex + 1) % this.images.length;
+    this.updateLightbox();
+  }
+
+  prev() {
+    this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
+    this.updateLightbox();
+  }
+
+  updateLightbox() {
+    const current = this.images[this.currentIndex];
+    document.getElementById('lightbox-image').src = current.img;
+    document.getElementById('lightbox-image').alt = current.title;
+    document.getElementById('lightbox-title').textContent = current.title;
+    document.getElementById('lightbox-description').textContent = current.description;
+  }
+
+  setupEventListeners() {
+    document.getElementById('lightbox-close').addEventListener('click', () => {
+      this.close();
+    });
+
+    document.getElementById('lightbox').addEventListener('click', (e) => {
+      if (e.target.id === 'lightbox') {
+        this.close();
+      }
+    });
+
+    document.getElementById('lightbox-prev').addEventListener('click', () => {
+      this.prev();
+    });
+
+    document.getElementById('lightbox-next').addEventListener('click', () => {
+      this.next();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!document.getElementById('lightbox').classList.contains('active')) return;
+      
+      if (e.key === 'Escape') this.close();
+      if (e.key === 'ArrowRight') this.next();
+      if (e.key === 'ArrowLeft') this.prev();
+    });
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    new Lightbox();
+    console.log('✨ Lightbox inicializado');
+  }, 150);
+});
+
+// ===== NAVBAR SECTION HIGHLIGHT =====
+class NavbarSectionHighlight {
+    constructor() {
+        this.sections = ['inicio', 'nosotros', 'proceso', 'galeria', 'clientes', 'testimonios', 'contacto'];
+        this.currentSection = '';
+        this.init();
+    }
+
+    init() {
+        window.addEventListener('scroll', () => this.updateActiveSection());
+        this.updateActiveSection();
+    }
+
+    updateActiveSection() {
+        const scrollY = window.scrollY;
+        let currentActive = '';
+        
+        if (scrollY < 300) {
+            currentActive = 'inicio';
+        } else {
+            for (let i = this.sections.length - 1; i >= 0; i--) {
+                const sectionId = this.sections[i];
+                const section = document.getElementById(sectionId);
+                
+                if (section) {
+                    const sectionTop = section.offsetTop - 300;
+                    if (scrollY >= sectionTop) {
+                        currentActive = sectionId;
+                        break;
+                    }
+                }
+            }
+        }
+        
+        if (currentActive && currentActive !== this.currentSection) {
+            this.currentSection = currentActive;
+            this.highlightSection(currentActive);
+        }
+    }
+
+    highlightSection(sectionId) {
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+        });
+        
+        const activeLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+        if (activeLink) {
+            activeLink.classList.add('active');
+            activeLink.setAttribute('data-section', sectionId);
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    new NavbarSectionHighlight();
+});
+
+// ===== CARRUSEL MATERIA PRIMA =====
+document.addEventListener('DOMContentLoaded', () => {
+    const carouselImage = document.getElementById('carousel-image');
+    const circleBtns = document.querySelectorAll('.circle-btn');
+    
+    if (carouselImage && circleBtns.length > 0) {
+        let currentIndex = 0;
+        let autoPlayInterval;
+        
+        const changeImage = (btn) => {
+            const imageUrl = btn.getAttribute('data-image');
+            
+            carouselImage.classList.add('fade-out');
+            
+            setTimeout(() => {
+                carouselImage.src = imageUrl;
+                carouselImage.classList.remove('fade-out');
+                carouselImage.classList.add('fade-in');
+                
+                setTimeout(() => {
+                    carouselImage.classList.remove('fade-in');
+                }, 500);
+            }, 500);
+            
+            circleBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        };
+        
+        circleBtns.forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                currentIndex = index;
+                changeImage(btn);
+                clearInterval(autoPlayInterval);
+                startAutoPlay();
+            });
+        });
+        
+        const startAutoPlay = () => {
+            autoPlayInterval = setInterval(() => {
+                currentIndex = (currentIndex + 1) % circleBtns.length;
+                changeImage(circleBtns[currentIndex]);
+            }, 5000);
+        };
+        
+        startAutoPlay();
+    }
+});
+
+console.log('✨ Tashi Cerámica - Página cargada exitosamente');
