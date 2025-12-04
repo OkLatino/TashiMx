@@ -1028,6 +1028,273 @@ document.addEventListener('DOMContentLoaded', () => {
         
         startAutoPlay();
     }
+
+    // ========================================
+    // CARRUSELES HORIZONTALES INFINITOS
+    // ========================================
+    
+    function initHorizontalCarousels() {
+        const carousels = document.querySelectorAll('.horizontal-carousel');
+        
+        carousels.forEach(carousel => {
+            const track = carousel.querySelector('.carousel-track');
+            const items = Array.from(track.children);
+            const speed = carousel.dataset.speed || 30;
+            const leftBtn = carousel.querySelector('.carousel-nav-left');
+            const rightBtn = carousel.querySelector('.carousel-nav-right');
+            
+            // Duplicar items para crear efecto infinito
+            items.forEach(item => {
+                const clone = item.cloneNode(true);
+                track.appendChild(clone);
+            });
+            
+            // Calcular duración de la animación basada en el ancho total
+            const totalWidth = track.scrollWidth / 2;
+            const duration = totalWidth / speed;
+            
+            track.style.animationDuration = `${duration}s`;
+            
+            // Variables para control
+            let currentTranslate = 0;
+            let isPaused = false;
+            
+            // Función para mover el carrusel
+            function moveCarousel(direction) {
+                const itemWidth = items[0].offsetWidth + 32; // width + gap
+                if (direction === 'left') {
+                    currentTranslate += itemWidth;
+                } else {
+                    currentTranslate -= itemWidth;
+                }
+                track.style.transform = `translateX(${currentTranslate}px)`;
+                track.style.transition = 'transform 0.5s ease';
+                
+                setTimeout(() => {
+                    track.style.transition = '';
+                }, 500);
+            }
+            
+            // Event listeners para las flechas
+            if (leftBtn) {
+                leftBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    moveCarousel('left');
+                });
+            }
+            
+            if (rightBtn) {
+                rightBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    moveCarousel('right');
+                });
+            }
+            
+            // Agregar evento de click a todos los items
+            track.querySelectorAll('.carousel-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    const img = this.querySelector('img');
+                    const caption = this.querySelector('.carousel-caption');
+                    if (img && caption) {
+                        openLightbox(img.src, img.alt, caption.textContent);
+                    }
+                });
+                
+                // Prevenir drag de imagen por defecto
+                item.querySelector('img').addEventListener('dragstart', (e) => e.preventDefault());
+            });
+        });
+    }
+    
+    // Función lightbox simple
+    function openLightbox(src, alt, caption) {
+        // Crear overlay si no existe
+        let lightbox = document.getElementById('carousel-lightbox');
+        if (!lightbox) {
+            lightbox = document.createElement('div');
+            lightbox.id = 'carousel-lightbox';
+            lightbox.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.95);
+                z-index: 10000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                padding: 2rem;
+                cursor: pointer;
+            `;
+            
+            const img = document.createElement('img');
+            img.style.cssText = `
+                max-width: 90%;
+                max-height: 80vh;
+                object-fit: contain;
+                border-radius: 10px;
+            `;
+            
+            const captionEl = document.createElement('div');
+            captionEl.style.cssText = `
+                color: white;
+                font-size: 1.5rem;
+                margin-top: 1rem;
+                font-family: 'Playfair Display', serif;
+                font-weight: 600;
+            `;
+            
+            const closeBtn = document.createElement('button');
+            closeBtn.innerHTML = '✕';
+            closeBtn.style.cssText = `
+                position: absolute;
+                top: 2rem;
+                right: 2rem;
+                background: white;
+                border: none;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                font-size: 1.5rem;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            `;
+            
+            lightbox.appendChild(img);
+            lightbox.appendChild(captionEl);
+            lightbox.appendChild(closeBtn);
+            document.body.appendChild(lightbox);
+            
+            // Cerrar al hacer click
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox || e.target === closeBtn) {
+                    lightbox.style.display = 'none';
+                }
+            });
+        }
+        
+        // Mostrar lightbox con la imagen
+        const img = lightbox.querySelector('img');
+        const captionEl = lightbox.querySelectorAll('div')[0];
+        img.src = src;
+        img.alt = alt;
+        captionEl.textContent = caption;
+        lightbox.style.display = 'flex';
+    }
+    
+    // Inicializar carruseles
+    initHorizontalCarousels();
 });
 
 console.log('✨ Tashi Cerámica - Página cargada exitosamente');
+// ========================================
+// MODALES DE GALERÍA Y CLIENTES
+// ========================================
+
+// Datos de galería
+const galleryData = [
+    { image: 'assets/Imagen19.png', text: 'Botella Colorida' },
+    { image: 'assets/Imagen22.png', text: 'Botella Ornamental' },
+    { image: 'assets/imagen24.png', text: 'Botellas Tiki' },
+    { image: 'assets/Imagen25.png', text: 'Botella con Relieve' },
+    { image: 'assets/Imagen26.png', text: 'Botella Calavera' },
+    { image: 'assets/Imagen27.png', text: 'Botella Premium' },
+    { image: 'assets/Imagen32.png', text: 'Botella Azteca' },
+    { image: 'assets/Imagen34.png', text: 'Botella Cactus' },
+    { image: 'assets/imagen1.jpg', text: 'Botella Artesanal' },
+    { image: 'assets/imagen2.jpg', text: 'Botella Premium' },
+    { image: 'assets/imagen4.png', text: 'Botellas Talavera' },
+    { image: 'assets/imagen6.png', text: 'Botella Premium' },
+    { image: 'assets/imagen7.png', text: 'Botella Circular' },
+    { image: 'assets/imagen8.png', text: 'Botella Talavera' },
+    { image: 'assets/Imagen20.png', text: 'Marco Circular' },
+    { image: 'assets/Imagen29.png', text: 'Vaso Cocktail' },
+    { image: 'assets/Imagen31.png', text: 'Lucha Libre' },
+    { image: 'assets/Imagen33.png', text: 'Día de Muertos' },
+    { image: 'assets/Imagen36.png', text: 'Marco Agave' },
+    { image: 'assets/imagen3.jpg', text: 'Marco Artesanal' },
+    { image: 'assets/imagen15.png', text: 'Arte Abstracto' },
+    { image: 'assets/Imagen21.png', text: 'Set Jarra y Vasos' },
+    { image: 'assets/Imagen35.png', text: 'Set Premium' },
+    { image: 'assets/imagen14.png', text: 'Set de Vajilla' }
+];
+
+// Datos de clientes
+const clientesData = [
+    { image: 'assets/cliente1.png', text: 'Mundo Oro' },
+    { image: 'assets/cliente2.png', text: 'Los Nahuales' },
+    { image: 'assets/cliente3.png', text: 'Don Valerio' },
+    { image: 'assets/cliente4.png', text: 'Legacy by Real' },
+    { image: 'assets/cliente5.png', text: 'Dinastía Real' },
+    { image: 'assets/cliente6.png', text: 'Premium Line' },
+    { image: 'assets/cliente7.png', text: 'Maxino Imperio' },
+    { image: 'assets/cliente8.png', text: 'Dulce Amigura' },
+    { image: 'assets/cliente9.png', text: 'Amor Mío' },
+    { image: 'assets/cliente10.png', text: 'Arte Editions' },
+    { image: 'assets/cliente11.png', text: 'Don Ramón' },
+    { image: 'assets/cliente12.png', text: 'Oro de Oaxaca' }
+];
+
+function openGalleryModal() {
+    const modal = document.getElementById('galleryModal');
+    const grid = document.getElementById('modalGalleryGrid');
+    grid.innerHTML = '';
+    
+    galleryData.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'modal-gallery-item';
+        div.innerHTML = `
+            <img src="${item.image}" alt="${item.text}">
+            <div class="modal-gallery-caption">${item.text}</div>
+        `;
+        div.onclick = () => openLightbox(item.image, item.text, item.text);
+        grid.appendChild(div);
+    });
+    
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeGalleryModal() {
+    const modal = document.getElementById('galleryModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function openClientesModal() {
+    const modal = document.getElementById('clientesModal');
+    const grid = document.getElementById('modalClientesGrid');
+    grid.innerHTML = '';
+    
+    clientesData.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'modal-gallery-item';
+        div.innerHTML = `
+            <img src="${item.image}" alt="${item.text}">
+            <div class="modal-gallery-caption">${item.text}</div>
+        `;
+        div.onclick = () => openLightbox(item.image, item.text, item.text);
+        grid.appendChild(div);
+    });
+    
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeClientesModal() {
+    const modal = document.getElementById('clientesModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Cerrar modal al hacer click fuera
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('modal-overlay')) {
+        closeGalleryModal();
+        closeClientesModal();
+    }
+});
