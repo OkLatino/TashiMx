@@ -1208,7 +1208,7 @@ const galleryData = [
     { image: 'assets/Imagen32.png', text: 'Botella Azteca' },
     { image: 'assets/Imagen34.png', text: 'Botella Cactus' },
     { image: 'assets/imagen1.jpg', text: 'Botella Artesanal' },
-    { image: 'assets/imagen2.jpg', text: 'Botella Premium' },
+    { image: 'assets/imagen38.png', text: 'Botella Premium' },
     { image: 'assets/imagen4.png', text: 'Botellas Talavera' },
     { image: 'assets/imagen6.png', text: 'Botella Premium' },
     { image: 'assets/imagen7.png', text: 'Botella Circular' },
@@ -1218,8 +1218,8 @@ const galleryData = [
     { image: 'assets/Imagen31.png', text: 'Lucha Libre' },
     { image: 'assets/Imagen33.png', text: 'Día de Muertos' },
     { image: 'assets/Imagen36.png', text: 'Marco Agave' },
-    { image: 'assets/imagen3.jpg', text: 'Marco Artesanal' },
-    { image: 'assets/imagen15.png', text: 'Arte Abstracto' },
+    { image: 'assets/imagen37.png', text: 'Botella Artesanal' },
+    { image: 'assets/imagen39.png', text: 'Set de Vasos' },
     { image: 'assets/Imagen21.png', text: 'Set Jarra y Vasos' },
     { image: 'assets/Imagen35.png', text: 'Set Premium' },
     { image: 'assets/imagen14.png', text: 'Set de Vajilla' }
@@ -1227,18 +1227,18 @@ const galleryData = [
 
 // Datos de clientes
 const clientesData = [
-    { image: 'assets/cliente1.png', text: 'Mundo Oro' },
-    { image: 'assets/cliente2.png', text: 'Los Nahuales' },
-    { image: 'assets/cliente3.png', text: 'Don Valerio' },
-    { image: 'assets/cliente4.png', text: 'Legacy by Real' },
-    { image: 'assets/cliente5.png', text: 'Dinastía Real' },
-    { image: 'assets/cliente6.png', text: 'Premium Line' },
-    { image: 'assets/cliente7.png', text: 'Maxino Imperio' },
-    { image: 'assets/cliente8.png', text: 'Dulce Amigura' },
-    { image: 'assets/cliente9.png', text: 'Amor Mío' },
-    { image: 'assets/cliente10.png', text: 'Arte Editions' },
-    { image: 'assets/cliente11.png', text: 'Don Ramón' },
-    { image: 'assets/cliente12.png', text: 'Oro de Oaxaca' }
+    { image: 'assets/cliente1.png', text: 'Tequila Mundo de Oro' },
+    { image: 'assets/cliente2.png', text: 'Tequila Juegos Mexicanos' },
+    { image: 'assets/cliente3.png', text: 'Tequila Casa Valerío' },
+    { image: 'assets/cliente4.png', text: 'Legacy Dinastía Real' },
+    { image: 'assets/cliente5.png', text: 'Dinastía Real Ceramicas' },
+    { image: 'assets/cliente6.png', text: 'Máximo Imperio' },
+    { image: 'assets/cliente7.png', text: 'Premium Line Dinastía Real' },
+    { image: 'assets/cliente8.png', text: 'Tequila Dinastía Real' },
+    { image: 'assets/cliente9.png', text: 'Tequila Dulce Amargura' },
+    { image: 'assets/cliente10.png', text: 'Tequila Arte Azul' },
+    { image: 'assets/cliente11.png', text: 'Tequila Amor Mío' },
+    { image: 'assets/cliente12.png', text: 'Tequila Don Ramón' }
 ];
 
 function openGalleryModal() {
