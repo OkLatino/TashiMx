@@ -2,858 +2,1815 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tashi Cerámica | Botellas Premium Artesanales</title>
-  <meta name="description"
-    content="Fabricamos botellas premium en cerámica stoneware. Artesanías para conquistar tu corazón.">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Raleway:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FWM2VNVTR0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-FWM2VNVTR0');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Título Principal -->
+    <title>Mavi Bayona - Psicoterapeuta | Tanatóloga | Logoterapeuta</title>
+    <meta name="description"
+        content="Psicoterapia, Tanatología y Logoterapia. Un espacio seguro donde puedes ser tú mismo/a. Acompañamiento profesional para ansiedad, duelo y búsqueda de sentido.">
+
+    <!-- Metadatos para Redes Sociales (Open Graph & WhatsApp) -->
+    <!-- IMPORTANTE: Reemplaza 'https://mavibayona.com' con tu dominio real si es diferente -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mavibayona.com/">
+    <meta property="og:title" content="Mavi Bayona - Psicoterapeuta | Tanatóloga">
+    <meta property="og:description"
+        content="Un espacio seguro para acompañarte en tu proceso. Psicoterapia, manejo de duelo y sentido de vida.">
+    <!-- La imagen debe ser una URL completa (con https://) para funcionar mejor -->
+    <meta property="og:image" content="https://mavibayona.com/assets/logoMavi.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Metadatos para Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mavi Bayona - Psicoterapeuta">
+    <meta name="twitter:description"
+        content="Un espacio seguro para acompañarte en tu proceso. Psicoterapia, manejo de duelo y sentido de vida.">
+    <meta name="twitter:image" content="https://mavibayona.com/assets/logoMavi.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/logoMavi.png">
+    <link rel="shortcut icon" type="image/png" href="assets/logoMavi.png">
+    <link rel="apple-touch-icon" href="assets/logoMavi.png">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --primary-gold: #D4AF37;
+            --primary-cyan: #1B9AAA;
+            --primary-turquoise: #06D6A0;
+            --accent-teal: #2D9596;
+            --neutral-light: #F8F9FA;
+            --neutral-dark: #2C3E50;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --white: #FFFFFF;
+            --gradient-primary: linear-gradient(135deg, #1B9AAA 0%, #06D6A0 50%, #2D9596 100%);
+            --gradient-warm: linear-gradient(135deg, #D4AF37 0%, #F4E4C1 100%);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        /* Header - Pill Nav Style */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            background: transparent;
+        }
+
+        .pill-nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            position: relative;
+        }
+
+        .header-logos {
+            position: absolute;
+            left: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .pill-logo {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: white;
+            padding: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .pill-logo:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 8px 35px rgba(0, 0, 0, 0.25);
+        }
+
+        .pill-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .header-logo-horizontal {
+            width: 140px;
+            height: 55px;
+            background: white;
+            border-radius: 27.5px;
+            padding: 8px 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .header-logo-horizontal:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 35px rgba(0, 0, 0, 0.25);
+        }
+
+        .header-logo-horizontal img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .pill-nav-items {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 6px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .pill-nav-items ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .pill-nav-items a {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 24px;
+            color: var(--primary-cyan);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pill-nav-items a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: var(--primary-cyan);
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+            z-index: 0;
+        }
+
+        .pill-nav-items a:hover::before {
+            width: 200%;
+            height: 400%;
+        }
+
+        .pill-nav-items a span {
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s ease;
+        }
+
+        .pill-nav-items a:hover span {
+            color: white;
+        }
+
+        .pill-nav-items a.active {
+            background: var(--primary-cyan);
+            color: white;
+        }
+
+        .pill-nav-items a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+            background: var(--primary-gold);
+            border-radius: 50%;
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-button {
+            display: none;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: white;
+            border: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            cursor: pointer;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            position: absolute;
+            right: 0;
+        }
+
+        .mobile-menu-button:hover {
+            transform: scale(1.05);
+        }
+
+        .hamburger-line {
+            width: 24px;
+            height: 3px;
+            background: var(--primary-cyan);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-button.active .hamburger-line:first-child {
+            transform: rotate(45deg) translateY(7px);
+        }
+
+        .mobile-menu-button.active .hamburger-line:last-child {
+            transform: rotate(-45deg) translateY(-7px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 1rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 14px 20px;
+            color: var(--primary-cyan);
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .mobile-menu a:hover,
+        .mobile-menu a.active {
+            background: var(--primary-cyan);
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            .header-logos {
+                position: relative;
+                left: auto;
+            }
+
+            .pill-logo {
+                display: inline-flex;
+            }
+
+            .header-logo-horizontal {
+                display: none;
+            }
+
+            .pill-nav-items {
+                display: none;
+            }
+
+            .mobile-menu-button {
+                display: flex;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            margin: 0 !important;
+            padding: 0 !important;
+            position: relative;
+            color: var(--white);
+            text-align: center;
+            overflow: hidden;
+            width: 100% !important;
+            max-width: none !important;
+            height: 100vh;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            left: 0;
+            right: 0;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(27, 154, 170, 0.65) 0%, rgba(6, 214, 160, 0.55) 50%, rgba(45, 149, 150, 0.65) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero-content h1 {
+            text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.7);
+            margin-bottom: 1.5rem;
+            font-size: 3.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-content .subtitle {
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+            text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.98;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-gold);
+            color: var(--text-dark);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* CTA Principal con animación de pulsación */
+        .cta-primary {
+            background: var(--primary-gold) !important;
+            color: var(--text-dark) !important;
+            font-size: 1.2rem !important;
+            padding: 1.3rem 3rem !important;
+            animation: pulse 2s ease infinite;
+            box-shadow: 0 6px 25px rgba(212, 175, 55, 0.4) !important;
+        }
+
+        .cta-primary:hover {
+            animation: none;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 35px rgba(212, 175, 55, 0.6) !important;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 6px 25px rgba(212, 175, 55, 0.4);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 8px 30px rgba(212, 175, 55, 0.6);
+            }
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        section:not(.hero) {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-cyan);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-gold);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            border-top: 4px solid var(--primary-cyan);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card a:hover {
+            background: var(--accent-teal) !important;
+            transform: scale(1.05);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .service-icon svg {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .service-card h3 {
+            color: var(--primary-cyan);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Appointment Form */
+        .appointment-form {
+            background: var(--gradient-primary);
+            padding: 4rem;
+            border-radius: 20px;
+            color: var(--white);
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 15px 50px rgba(27, 154, 170, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-button {
+            background: var(--primary-gold);
+            color: var(--text-dark);
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .submit-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .contact-item {
+            padding: 2rem;
+            background: var(--neutral-light);
+            border-radius: 15px;
+        }
+
+        .contact-item i {
+            font-size: 2.5rem;
+            color: var(--primary-cyan);
+            margin-bottom: 1rem;
+        }
+
+        .contact-item svg {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--neutral-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+
+            /* Header Mobile */
+            .pill-nav-container {
+                justify-content: space-between;
+                gap: 1rem;
+            }
+
+            .pill-logo {
+                position: relative;
+                left: auto;
+            }
+
+            .mobile-menu-button {
+                position: relative;
+                right: auto;
+            }
+
+            /* About Image Overlay - Mobile adjustments */
+            .about-image>div>div[style*="position: absolute"] {
+                top: auto !important;
+                bottom: 1.5rem !important;
+                left: 1rem !important;
+                right: 1rem !important;
+                max-width: calc(100% - 2rem) !important;
+                padding: 1.2rem 1.5rem !important;
+            }
+
+            .about-image>div>div[style*="position: absolute"] h4 {
+                font-size: 1.1rem !important;
+                margin-bottom: 0.6rem !important;
+            }
+
+            .about-image>div>div[style*="position: absolute"] p {
+                font-size: 0.85rem !important;
+                line-height: 1.5 !important;
+            }
+
+            /* Hero Mobile */
+            .hero {
+                width: 100% !important;
+                height: 100vh;
+                min-height: 100vh;
+                padding: 0;
+                margin: 0;
+                justify-content: center;
+            }
+
+            .hero-content {
+                padding: 0 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+                line-height: 1.3;
+                margin-bottom: 1rem;
+            }
+
+            .hero-content .subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-content p {
+                font-size: 0.95rem !important;
+                line-height: 1.6 !important;
+                margin-bottom: 1.5rem !important;
+            }
+
+            .hero-content div {
+                flex-direction: column;
+                gap: 0.8rem !important;
+                align-items: center !important;
+            }
+
+            .hero-content div a {
+                width: 100%;
+                max-width: 280px;
+                padding: 0.9rem 2rem;
+                font-size: 0.9rem;
+                display: block;
+                text-align: center;
+            }
+
+            /* About Section Mobile */
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-text h3 {
+                font-size: 1.5rem !important;
+            }
+
+            .about-text p {
+                font-size: 0.95rem;
+            }
+
+            /* Services Mobile */
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .service-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .service-card h3 {
+                font-size: 1.3rem;
+            }
+
+            .service-card p {
+                font-size: 0.95rem;
+            }
+
+            /* Form Mobile */
+            .appointment-form {
+                padding: 2rem 1.5rem;
+            }
+
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                font-size: 16px;
+                /* Previene zoom en iOS */
+            }
+
+            .submit-button {
+                font-size: 1rem;
+                padding: 0.9rem 2rem;
+            }
+
+            /* Contact Mobile */
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .contact-item {
+                padding: 1.5rem;
+            }
+
+            /* Sections Mobile */
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+
+            /* CTA Buttons */
+            .cta-button {
+                font-size: 0.9rem;
+                padding: 0.9rem 2rem;
+            }
+
+            /* Navigation adjustments */
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Extra small devices (phones, less than 375px) */
+        @media (max-width: 375px) {
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .hero-content .subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-content p {
+                font-size: 0.9rem !important;
+            }
+
+            section {
+                padding: 2.5rem 1rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .appointment-form {
+                padding: 1.5rem 1rem;
+            }
+
+            /* About Image Overlay - Extra small screens */
+            .about-image>div>div[style*="position: absolute"] {
+                bottom: 1rem !important;
+                left: 0.75rem !important;
+                right: 0.75rem !important;
+                padding: 1rem 1.2rem !important;
+            }
+
+            .about-image>div>div[style*="position: absolute"] h4 {
+                font-size: 1rem !important;
+            }
+
+            .about-image>div>div[style*="position: absolute"] p {
+                font-size: 0.8rem !important;
+            }
+        }
+
+        /* Adjust checks on mobile */
+        @media (max-width: 500px) {
+            .hero-content p:last-child {
+                flex-direction: column !important;
+                gap: 0.5rem !important;
+                font-size: 0.85rem !important;
+            }
+        }
+
+        /* Large screens */
+        @media (min-width: 1400px) {
+            .hero h1 {
+                font-size: 4rem;
+            }
+
+            .hero-content .subtitle {
+                font-size: 1.8rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem !important;
+            }
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: #2ecc71;
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: fadeInUp 0.5s ease;
+        }
+    </style>
 </head>
 
 <body>
-  <!-- Navegación (se oculta en móvil por el bubble menu vía JS) -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <div class="nav-logo">
-        <img src="assets/logo2.jpg" alt="Tashi Cerámica Logo" class="logo-img logo-interactive">
-      </div>
-      <div class="nav-toggle" id="navToggle">
-        <span></span><span></span><span></span>
-      </div>
-      <ul class="nav-menu" id="navMenu">
-        <li><a href="#inicio" class="nav-link">Inicio</a></li>
-        <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
-        <li><a href="#proceso" class="nav-link">Proceso</a></li>
-        <li><a href="#galeria" class="nav-link">Galería</a></li>
-        <li><a href="#clientes" class="nav-link">Clientes</a></li>
-        <li><a href="#testimonios" class="nav-link">Testimonios</a></li>
-        <li><a href="#contacto" class="nav-link nav-link-cta">Contacto</a></li>
-      </ul>
-    </div>
-  </nav>
+    <!-- Header -->
+    <header>
+        <div class="pill-nav-container">
+            <div class="header-logos">
+                <a href="#inicio" class="pill-logo" aria-label="Home">
+                    <img src="assets/logoMavi.png" alt="Mavi Bayona Logo"
+                        style="width: 100%; height: 100%; object-fit: contain;">
+                </a>
 
-  <!-- Bubble Menu -->
-  <nav class="bubble-menu-nav" aria-label="Bubble Navigation">
-    <div class="bubble bubble-logo-container" onclick="window.location.href='#inicio'">
-      <img src="assets/logo2.jpg" alt="Tashi Cerámica" class="bubble-logo-img">
-    </div>
-
-    <button type="button" class="bubble bubble-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
-      <span class="menu-line"></span>
-      <span class="menu-line"></span>
-    </button>
-  </nav>
-
-  <div class="bubble-menu-overlay">
-    <ul class="bubble-pills-list" role="menu">
-      <li class="bubble-pill-item">
-        <a href="#inicio" class="bubble-pill-link" data-color="orange" data-rotation="-8deg"
-          style="--rotation:-8deg; --pill-bg:#FF6B35; --pill-color:white; --pill-border:#FF6B35;">
-          <span class="bubble-pill-label">Inicio</span>
-        </a>
-      </li>
-      <li class="bubble-pill-item">
-        <a href="#nosotros" class="bubble-pill-link" data-color="pink" data-rotation="8deg"
-          style="--rotation:8deg; --pill-bg:#E91E63; --pill-color:white; --pill-border:#E91E63;">
-          <span class="bubble-pill-label">Nosotros</span>
-        </a>
-      </li>
-      <li class="bubble-pill-item">
-        <a href="#proceso" class="bubble-pill-link" data-color="gold" data-rotation="8deg"
-          style="--rotation:8deg; --pill-bg:#F7931E; --pill-color:white; --pill-border:#F7931E;">
-          <span class="bubble-pill-label">Proceso</span>
-        </a>
-      </li>
-      <li class="bubble-pill-item">
-        <a href="#galeria" class="bubble-pill-link" data-color="blue" data-rotation="8deg"
-          style="--rotation:8deg; --pill-bg:#2196F3; --pill-color:white; --pill-border:#2196F3;">
-          <span class="bubble-pill-label">Galería</span>
-        </a>
-      </li>
-      <li class="bubble-pill-item">
-        <a href="#clientes" class="bubble-pill-link" data-color="green" data-rotation="-8deg"
-          style="--rotation:-8deg; --pill-bg:#4CAF50; --pill-color:white; --pill-border:#4CAF50;">
-          <span class="bubble-pill-label">Clientes</span>
-        </a>
-      </li>
-      <li class="bubble-pill-item">
-        <a href="#contacto" class="bubble-pill-link" data-color="purple" data-rotation="-8deg"
-          style="--rotation:-8deg; --pill-bg:#9C27B0; --pill-color:white; --pill-border:#9C27B0;">
-          <span class="bubble-pill-label">Contacto</span>
-        </a>
-      </li>
-    </ul>
-  </div>
-
-  <!-- Hero con video -->
-  <section class="hero" id="inicio">
-    <div class="hero-video-container">
-      <video class="hero-video" autoplay muted loop playsinline poster="assets/poster.jpg">
-        <source src="assets/BOTELLAS_TASHI_OK_3.mp4" type="video/mp4">
-      </video>
-      <div class="hero-overlay"></div>
-    </div>
-    <div class="hero-content">
-      <div class="hero-logo-watermark">
-        <img src="assets/logo2.jpg" alt="Tashi" class="logo-watermark logo-pulse">
-      </div>
-      <h1 class="hero-title animate-fade-in">
-        <span class="hero-title-small">Bienvenido a</span>
-        Tashi Cerámica
-      </h1>
-      <p class="hero-subtitle animate-fade-in-delay">Artesanías para conquistar tu corazón</p>
-      <div class="hero-description animate-fade-in-delay-2">
-        <p>Fabricamos botellas PREMIUM en cerámica stoneware</p>
-      </div>
-      <a href="#nosotros" class="hero-cta animate-fade-in-delay-3">Descubre Nuestra Historia</a>
-    </div>
-    <div class="scroll-indicator">
-      <div class="mouse">
-        <div class="wheel"></div>
-      </div>
-      <p>Scroll</p>
-    </div>
-  </section>
-
-  <!-- Nosotros -->
-  <section class="about" id="nosotros">
-    <div class="container">
-      <div class="brand-logo-float">
-        <img src="assets/logo3.png" alt="Tashi Logo" class="floating-logo">
-      </div>
-      <div class="about-grid">
-        <div class="about-content scroll-reveal">
-          <span class="section-tag">Nuestra Esencia</span>
-          <h2 class="section-title">Artesanía que trasciende</h2>
-          <div class="about-text">
-            <p>Somos una empresa apasionada y comprometida con la fabricación de productos cerámicos de alta calidad.
-              nuestra especialidad son las botellas para destilados pintamos a mano.</p>
-            <p>Contamos con un equipo de expertos y profesionales altamente capacitados para crear piezas únicas y
-              distintivas que embellecen cualquier espacio.</p>
-            <blockquote class="about-quote">
-              <img src="assets/LOGO_COMPLETO_TASHI.png" alt="Tashi Logo" class="quote-logo logo-float">
-              "Mas que una botella, creamos arte. Nuestro propósito llevar nuestras artesanías a los mejores lugares del
-              mundo"
-            </blockquote>
-          </div>
-          <div class="about-stats">
-            <div class="stat-item">
-              <span class="stat-number" data-target="20">0</span>
-              <span class="stat-label">Años de Experiencia</span>
+                <a href="#inicio" class="header-logo-horizontal" aria-label="Home">
+                    <img src="assets/mavibayona-logo.png" alt="Mavi Bayona"
+                        style="width: 100%; height: 100%; object-fit: contain;">
+                </a>
             </div>
-            <div class="stat-item">
-              <span class="stat-number" data-target="1000">0</span>
-              <span class="stat-label">Piezas Creadas</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number" data-target="100">0</span>
-              <span class="stat-label">Clientes Satisfechos</span>
-            </div>
-          </div>
-        </div>
-        <div class="about-images scroll-reveal">
-          <div class="about-image-grid">
-            <img src="assets/imagen1.jpg" alt="Cerámica Tashi 1" class="about-img about-img-1">
-            <img src="assets/imagen2.jpg" alt="Cerámica Tashi 2" class="about-img about-img-2">
-            <img src="assets/imagen5.png" alt="Cerámica Tashi 3" class="about-img about-img-3">
-            <img src="assets/Imagen23.png" alt="Botellas Mezcal Artesanales" class="about-img about-img-4">
-            <img src="assets/Imagen28.png" alt="Vaso Cocktail Cerámico" class="about-img about-img-5">
-            <img src="assets/Imagen29.png" alt="Decoración Cerámica Azul" class="about-img about-img-6">
-            <img src="assets/Fondo1.png" alt="Vasos Tiki Cerámicos" class="about-img about-img-7">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Features -->
-  <section class="features">
-  <div class="container">
-    <div class="features-grid">
-      
-      <!-- Card 1: Hecho a Mano (Reemplaza Pintado a Mano) -->
-      <div class="feature-card scroll-reveal feature-card-1">
-        <div class="feature-icon">
-          <!-- Icono Manos -->
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"/>
-            <path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2"/>
-            <path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8"/>
-            <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/>
-          </svg>
-        </div>
-        <h3>Hecho a Mano</h3>
-        <p>Creación de piezas de cerámica únicas, elaboradas completamente de forma artesanal.</p>
-      </div>
+            <nav class="pill-nav-items">
+                <ul>
+                    <li><a href="#inicio" class="active"><span>Inicio</span></a></li>
+                    <li><a href="#sobre-mi"><span>Sobre Mí</span></a></li>
+                    <li><a href="#servicios"><span>Servicios</span></a></li>
+                    <li><a href="#test"><span>Test Diagnóstico</span></a></li>
+                    <li><a href="#agendar"><span>Agendar Cita</span></a></li>
+                    <li><a href="#contacto"><span>Contacto</span></a></li>
+                </ul>
+            </nav>
 
-      <!-- Card 2: Alta Temperatura (Conservado) -->
-      <div class="feature-card scroll-reveal feature-card-2">
-        <div class="feature-icon">
-          <!-- Icono Temperatura Original -->
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" />
-          </svg>
-        </div>
-        <h3>Alta Temperatura</h3>
-        <p>Cocción a 1260°C garantiza durabilidad y resistencia excepcional</p>
-      </div>
-
-      <!-- Card 3: Historia y Pasión (Reemplaza Premium Quality) -->
-      <div class="feature-card scroll-reveal feature-card-3">
-        <div class="feature-icon">
-          <!-- Icono Pincel -->
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="m9.06 11.9 8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"/>
-            <path d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2.5 6.04 4.52 0 4.71-2.5 6.04-2.5 1.67 0 3.02-1.34 3.02-3 0-3.38-3.56-3.56-3.56Z"/>
-          </svg>
-        </div>
-        <h3>Historia y Pasión</h3>
-        <p>Elaboramos cada pieza inyectando historia, tradición y mucha pasión en cada detalle.</p>
-      </div>
-
-      <!-- Card 4: Calidad y Corazón (Reemplaza Exportación Mundial) -->
-      <div class="feature-card scroll-reveal feature-card-4">
-        <div class="feature-icon">
-          <!-- Icono Corazón -->
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
-          </svg>
-        </div>
-        <h3>Calidad y Corazón</h3>
-        <p>Alta calidad e identidad propia, poniendo el corazón en el resultado final.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-  <!-- Proceso -->
-  <section class="process" id="proceso">
-    <div class="container">
-      <div class="section-header scroll-reveal">
-        <div class="logo-brand-header">
-          <img src="assets/logo3.png" alt="Tashi" class="logo-section-badge">
-        </div>
-        <span class="section-tag">Nuestro Arte</span>
-        <h2 class="section-title">¿Cómo lo hacemos?</h2>
-        <p class="section-subtitle">Un proceso artesanal que combina tradición y técnica</p>
-      </div>
-
-      <!-- Materia Prima -->
-      <div class="process-intro scroll-reveal">
-        <div class="process-intro-content">
-          <div class="process-logo-badge">
-            <img src="assets/LOGO_COMPLETO_TASHI.png" alt="Tashi" class="badge-logo logo-rotate">
-          </div>
-          <h3>Materia Prima</h3>
-          <p>Cuatro tipos de tierra —arcilla, sílice, caolín y feldespato— se unen para formar una pasta especial. Esta
-            combinación permite dar a nuestras piezas los requisitos necesarios para la calidad</p>
-        </div>
-        <div class="process-intro-image">
-          <img id="carousel-image" src="assets/proceso1.png" alt="Materia Prima" class="img-float">
-          <div class="carousel-circle-nav">
-            <button class="circle-btn active" data-color="naranja" data-index="0" data-image="assets/proceso1.png"
-              aria-label="Imagen 1"></button>
-            <button class="circle-btn" data-color="rosa" data-index="1" data-image="assets/proceso2.png"
-              aria-label="Imagen 2"></button>
-            <button class="circle-btn" data-color="amarillo" data-index="2" data-image="assets/proceso3.png"
-              aria-label="Imagen 3"></button>
-            <button class="circle-btn" data-color="azul" data-index="3" data-image="assets/proceso4.png"
-              aria-label="Imagen 4"></button>
-            <button class="circle-btn" data-color="verde" data-index="4" data-image="assets/proceso5.png"
-              aria-label="Imagen 5"></button>
-          </div>
-        </div>
-      </div>
-
-
-      <!-- Timeline de Proceso -->
-      <div class="process-timeline">
-        <div class="timeline-item scroll-reveal" data-step="1">
-          <div class="timeline-marker"><span class="timeline-number">01</span></div>
-          <div class="timeline-content">
-            <div class="timeline-text">
-              <h3>Vaciado</h3>
-              <p>La pasta líquida se vierte en moldes de yeso. Con el tiempo, el yeso absorbe la humedad y empieza a
-                dibujar la silueta de la pieza. Una vez que alcanza el grosor ideal, retiramos el exceso y desmoldamos
-                con cuidado.</p>
-            </div>
-            <div class="timeline-image">
-              <img src="assets/procesoVaciado.png" alt="Proceso de Vaciado">
-            </div>
-          </div>
+            <button class="mobile-menu-button" aria-label="Toggle menu" onclick="toggleMobileMenu()">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
         </div>
 
-        <div class="timeline-item scroll-reveal" data-step="2">
-          <div class="timeline-marker"><span class="timeline-number">02</span></div>
-          <div class="timeline-content">
-            <div class="timeline-text">
-              <h3>Pulido</h3>
-              <p>Con esponjas, cuchillas y mucha paciencia, comenzamos a perfeccionar cada pieza. Se eliminan los restos
-                que dejó el molde, se suavizan las uniones y se corrigen las imperfecciones.</p>
-            </div>
-            <div class="timeline-image">
-              <img src="assets/procesoPulido.png" alt="Proceso de Pulido">
-            </div>
-          </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="#inicio" class="active" onclick="closeMobileMenu()">Inicio</a></li>
+                <li><a href="#sobre-mi" onclick="closeMobileMenu()">Sobre Mí</a></li>
+                <li><a href="#servicios" onclick="closeMobileMenu()">Servicios</a></li>
+                <li><a href="#test" onclick="closeMobileMenu()">Test Diagnóstico</a></li>
+                <li><a href="#agendar" onclick="closeMobileMenu()">Agendar Cita</a></li>
+                <li><a href="#contacto" onclick="closeMobileMenu()">Contacto</a></li>
+            </ul>
         </div>
+    </header>
 
-        <div class="timeline-item scroll-reveal" data-step="3">
-          <div class="timeline-marker"><span class="timeline-number">03</span></div>
-          <div class="timeline-content">
-            <div class="timeline-text">
-              <h3>Sancocho</h3>
-              <p>La pieza entra al horno por primera vez, a 1060°C. Este paso le da resistencia y transforma la pasta
-                cruda en lo que llamamos "sancocho".</p>
-            </div>
-            <div class="timeline-image">
-              <img src="assets/procesoSanchocho.png" alt="Proceso de Sancocho">
-            </div>
-          </div>
-        </div>
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <!-- Video de fondo -->
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="assets/MAVI_WEB.mp4" type="video/mp4">
+        </video>
 
-        <div class="timeline-item scroll-reveal" data-step="4">
-          <div class="timeline-marker"><span class="timeline-number">04</span></div>
-          <div class="timeline-content">
-            <div class="timeline-text">
-              <h3>Esmaltado</h3>
-              <p>Aplicamos esmalte con técnica de inmersión, cubriendo por completo la pieza. Antes de esmaltar, la
-                limpiamos minuciosamente para evitar residuos de polvo que puedan alterar el acabado.</p>
-            </div>
-            <div class="timeline-image">
-              <img src="assets/procesoEsmaltado.png" alt="Proceso de Esmaltado">
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item scroll-reveal" data-step="5">
-          <div class="timeline-marker"><span class="timeline-number">05</span></div>
-          <div class="timeline-content">
-            <div class="timeline-text">
-              <h3>Decorado</h3>
-              <p>Aquí embellecemos la superficie mediante técnicas como trazado, relieve o relleno, añadiendo carácter y
-                estilo único a cada pieza.</p>
-            </div>
-            <div class="timeline-image">
-              <img src="assets/procesoDecorado.png" alt="Proceso de Decorado">
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item scroll-reveal" data-step="6">
-          <div class="timeline-marker"><span class="timeline-number">06</span></div>
-          <div class="timeline-content">
-            <div class="timeline-text">
-              <h3>Vidriado</h3>
-              <p>Finalmente, la pieza se cuece a 1260°C, el esmalte se vitrifica y la pieza se fortalece asegurando su
-                durabilidad y calidad final.</p>
-            </div>
-            <div class="timeline-image">
-              <img src="assets/procesoVidriado.png" alt="Proceso de Vidriado">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-  </section>
-
-
-  <!-- Galería -->
-  <section class="gallery" id="galeria">
-    <div class="container">
-      <div class="section-header scroll-reveal">
-        <div class="logo-brand-accent">
-          <img src="assets/logo3.png" alt="Tashi" class="logo-accent-small">
-        </div>
-        <span class="section-tag">Portafolio</span>
-        <h2 class="section-title">Nuestras Creaciones</h2>
-        <p class="section-subtitle">Explora la belleza de cada pieza artesanal</p>
-        <button class="view-all-btn" onclick="openGalleryModal()">Ver Todo</button>
-      </div>
-
-      <!-- Carrusel 1 - Izquierda a derecha -->
-      <div class="horizontal-carousel carousel-left-to-right" data-speed="75">
-        <div class="carousel-track">
-          <div class="carousel-item">
-            <img src="assets/Imagen19.png" alt="Botella Colorida">
-            <div class="carousel-caption">Botella Colorida</div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/Imagen22.png" alt="Botella Ornamental">
-            <div class="carousel-caption">Botella Ornamental</div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/imagen24.png" alt="Botellas Tiki">
-            <div class="carousel-caption">Botellas Tiki</div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/Imagen25.png" alt="Botella con Relieve">
-            <div class="carousel-caption">Botella con Relieve</div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/Imagen26.png" alt="Botella Calavera">
-            <div class="carousel-caption">Botella Calavera</div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/Imagen27.png" alt="Botella Tashi Premium">
-            <div class="carousel-caption">Botella Premium</div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/Imagen32.png" alt="Botella Azteca">
-            <div class="carousel-caption">Botella Azteca</div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/Imagen34.png" alt="Botella Cactus">
-            <div class="carousel-caption">Botella Cactus</div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/imagen1.jpg" alt="Botella Artesanal">
-            <div class="carousel-caption">Botella Artesanal</div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/imagen38.png" alt="Botella Premium">
-            <div class="carousel-caption">Botella Premium</div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/imagen4.png" alt="Botellas Talavera">
-            <div class="carousel-caption">Botellas Talavera</div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/imagen6.png" alt="Botella Premium">
-            <div class="carousel-caption">Botella Premium</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Carrusel 2 - Derecha a izquierda -->
-      <div class="horizontal-carousel carousel-right-to-left" data-speed="75">
-        <div class="carousel-track">
-          <div class="carousel-item">
-            <img src="assets/imagen7.png" alt="Botella Circular">
-            <div class="carousel-caption">Botella Circular</div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/imagen8.png" alt="Botella Talavera">
-            <div class="carousel-caption">Botella Talavera</div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/Imagen20.png" alt="Marco Circular">
-            <div class="carousel-caption">Marco Circular</div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/Imagen29.png" alt="Vaso Cocktail">
-            <div class="carousel-caption">Vaso Cocktail</div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/Imagen31.png" alt="Decoración Lucha Libre">
-            <div class="carousel-caption">Lucha Libre</div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/Imagen33.png" alt="Marco Día de Muertos">
-            <div class="carousel-caption">Día de Muertos</div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/Imagen36.png" alt="Marco Agave">
-            <div class="carousel-caption">Marco Agave</div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/imagen37.png" alt="Botella Artesanal">
-            <div class="carousel-caption">Botella Artesanal</div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/imagen39.png" alt="Set de Vasos">
-            <div class="carousel-caption">Set de Vasos</div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/Imagen21.png" alt="Set Jarra y Vasos">
-            <div class="carousel-caption">Set Jarra y Vasos</div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/Imagen35.png" alt="Set Premium">
-            <div class="carousel-caption">Set Premium</div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/imagen14.png" alt="Set de Vajilla">
-            <div class="carousel-caption">Set de Vajilla</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-
-  <!-- Sección CLIENTES -->
-  <section class="clientes" id="clientes">
-    <div class="container">
-      <div class="section-header scroll-reveal">
-        <div class="logo-brand-accent">
-          <img src="assets/logo3.png" alt="Tashi" class="logo-accent-small">
-        </div>
-        <span class="section-tag">Nuestros Clientes</span>
-        <h2 class="section-title">Marcas que confían en nosotros</h2>
-        <p class="section-subtitle">Colaboraciones con las mejores marcas de destilados</p>
-        <button class="view-all-btn" onclick="openClientesModal()">Ver Todo</button>
-      </div>
-
-      <!-- Carrusel 1 - Izquierda a derecha -->
-      <div class="horizontal-carousel carousel-left-to-right" data-speed="75">
-        <div class="carousel-track">
-          <div class="carousel-item">
-            <img src="assets/cliente1.png" alt="Tequila Mundo de Oro">
-            <div class="carousel-caption">Tequila Mundo de Oro</div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/cliente2.png" alt="Tequila Juegos Mexicanos">
-            <div class="carousel-caption">Tequila Juegos Mexicanos</div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/cliente3.png" alt="Tequila Casa Valerío">
-            <div class="carousel-caption">Tequila Casa Valerío</div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/cliente4.png" alt="Legacy Dinastía Real">
-            <div class="carousel-caption">Legacy Dinastía Real</div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/cliente5.png" alt="Dinastía Real Ceramicas">
-            <div class="carousel-caption">Dinastía Real Ceramicas</div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/cliente6.png" alt="Máximo Imperio">
-            <div class="carousel-caption">Máximo Imperio</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Carrusel 2 - Derecha a izquierda -->
-      <div class="horizontal-carousel carousel-right-to-left" data-speed="75">
-        <div class="carousel-track">
-          <div class="carousel-item">
-            <img src="assets/cliente7.png" alt="Premium Line Dinastía Real">
-            <div class="carousel-caption">Premium Line Dinastía Real</div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/cliente8.png" alt="Tequila Dinastía Real">
-            <div class="carousel-caption">Tequila Dinastía Real</div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/cliente9.png" alt="Tequila Dulce Amargura">
-            <div class="carousel-caption">Tequila Dulce Amargura</div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/cliente10.png" alt="Tequila Arte Azul">
-            <div class="carousel-caption">Tequila Arte Azul</div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/cliente11.png" alt="Tequila Amor Mío">
-            <div class="carousel-caption">Tequila Amor Mío</div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/cliente12.png" alt="Tequila Don Ramón">
-            <div class="carousel-caption">Tequila Don Ramón</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonios -->
-  <section class="testimonials" id="testimonios">
-    <div class="container">
-      <div class="section-header scroll-reveal">
-        <span class="section-tag">Testimonios</span>
-        <h2 class="section-title">Lo que dicen nuestros clientes</h2>
-      </div>
-
-      <div class="testimonials-carousel">
-      </div>
-
-      <!-- Reseñas -->
-      <div class="google-reviews scroll-reveal">
-        <h3>Reseñas verificadas</h3>
-        <div class="reviews-grid">
-          <div class="review-card">
-            <div class="review-header">
-              <span class="review-name">Beth, Texas Hill</span>
-              <span class="review-date">31 de marzo 2024</span>
-            </div>
-            <div class="review-stars">★★★★★</div>
-            <p>Me encanta este decantador de tequila festivo porque es precioso. Los colores son muy vivos y las
-              ilustraciones están colocadas con mucha precisión. ¡Me quedé atónita al abrir el paquete, ya que es mucho
-              más bonito que en la foto de internet! Tengo un familiar al que quiero regalarle uno.</p>
-          </div>
-          <div class="review-card">
-            <div class="review-header">
-              <span class="review-name">Mathew, Austin, TX</span>
-              <span class="review-date">05 de octubre 2023</span>
-            </div>
-            <div class="review-stars">★★★★★</div>
-            <p>Un producto precioso y bien elaborado. ¡Me encanta! Estaba un poco preocupado por el transporte, pero
-              estaba envuelto PERFECTAMENTE. Conservaré todos los materiales de envío y lo empaquetaré exactamente como
-              lo enviaron para asegurarme de que esté bien protegido si alguna vez me mudo.</p>
-          </div>
-          <div class="review-card">
-            <div class="review-header">
-              <span class="review-name">Linda</span>
-              <span class="review-date">06 de junio 2023</span>
-            </div>
-            <div class="review-stars">★★★★★</div>
-            <p>Este es el cuenco más pequeño, diminuto y lindo que he visto. ¡Me encanta! Es tan bonito que lo voy a
-              poner en mi vitrina para que se vea mejor. Gracias,Tashi Cerámica, por su delicado trabajo en este pequeño
-              cuenco.</p>
-          </div>
-          <div class="review-card">
-            <div class="review-header">
-              <span class="review-name">Sheila</span>
-              <span class="review-date">3 de febrero 2021</span>
-            </div>
-            <div class="review-stars">★★★★★</div>
-            <p>¡Esto es absolutamente impresionante! Me preocupaba esta compra porque parece muy frágil, y como viene de
-              otro país, ¡pasa más tiempo en manos del servicio postal! Venía muy bien empaquetado, envuelto en papel de
-              regalo. (¡Qué ecológico!) El decantador en sí no se siente tan frágil como parece en las fotos; está muy
-              bien hecho y el sombrero se cierra herméticamente contra la abertura. ¡Es una monada! Tenía que añadirlo a
-              nuestra decoración; ni siquiera bebemos, pero vivimos en el desierto, ¡y esto es PERFECTO! ¡Estoy muy
-              contenta con mi compra!</p>
-          </div>
-          <div class="review-card">
-            <div class="review-header">
-              <span class="review-name">Yolanda</span>
-              <span class="review-date">8 de mayo 2021</span>
-            </div>
-            <div class="review-stars">★★★★★</div>
-            <p>Es una pieza favorita y una reliquia muy preciada. Este fue un regalo para alguien que colecciona
-              Talavera y ¡le encantó! A todos los demás también les encantó. ¡Es realmente hermosa y una obra de arte!
+        <!-- Contenido del Hero -->
+        <div class="hero-content">
+            <h1>Entiendo por lo que estás pasando</h1>
+            <p class="subtitle">Y estoy aquí para acompañarte en tu proceso</p>
+            <p
+                style="font-size: 1.15rem; margin-bottom: 2.5rem; line-height: 1.7; max-width: 850px; margin-left: auto; margin-right: auto;">
+                Soy <strong>Mavi Bayona</strong>, Psicoterapeuta especializada en crear un espacio seguro donde puedas
+                ser tú mismo/a.
+                <strong>Juntos encontraremos el camino hacia tu bienestar.</strong>
             </p>
-          </div>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
+                <a href="#agendar" class="cta-button cta-primary" style="padding: 1.3rem 3rem; font-size: 1.2rem;">📅 Agendar Cita Ahora</a>
+                <a href="#test" class="cta-button"
+                    style="background: var(--primary-gold); color: var(--text-dark); padding: 1rem 2.5rem; font-size: 1rem; border: 2px solid var(--primary-gold);">✓
+                    Conoce cómo te sientes</a>
+                <a href="#sobre-mi" class="cta-button"
+                    style="background: transparent; border: 2px solid white; color: white; padding: 1rem 2.5rem; font-size: 1rem;">Más
+                    sobre mí</a>
+            </div>
+            <p
+                style="font-size: 0.95rem; opacity: 0.95; display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+                <span>✓ Espacio seguro y sin juicios</span>
+                <span>✓ Confidencialidad absoluta</span>
+                <span>✓ A tu propio ritmo</span>
+            </p>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CTA -->
-  <section class="cta-section">
-    <div class="cta-logo-bg">
-      <img src="assets/logo3.png" alt="Tashi" class="cta-logo-watermark">
-    </div>
-    <div class="cta-content scroll-reveal">
-      <h2>¿Listo para tener una pieza única?</h2>
-      <p>Contáctanos y descubre cómo podemos crear algo especial para ti</p>
-      <a href="#contacto" class="cta-button">Contactar Ahora</a>
-    </div>
-  </section>
-
-  <!-- Contacto -->
-  <section class="contact" id="contacto">
-    <div class="container">
-      <div class="contact-grid">
-        <div class="contact-info scroll-reveal">
-          <h2>Contacto</h2>
-          <p class="contact-subtitle">¡Hablemos de cerámica!</p>
-
-          <div class="contact-details">
-            <div class="contact-item">
-              <div class="contact-icon contact-icon-phone">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path
-                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                </svg>
-              </div>
-              <div class="contact-text">
-                <h3>Teléfono</h3>
-                <a href="tel:+5214621399584">+52 1 462 139 9584</a>
-              </div>
-            </div>
-
-            <div class="contact-item">
-              <div class="contact-icon contact-icon-whatsapp">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-                </svg>
-              </div>
-              <div class="contact-text">
-                <h3>WhatsApp</h3>
-                <a href="https://wa.me/5214621399584" target="_blank" rel="noopener">+52 1 462 139 9584</a>
-              </div>
-            </div>
-
-            <div class="contact-item">
-              <div class="contact-icon contact-icon-email">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                  <polyline points="22,6 12,13 2,6" />
-                </svg>
-              </div>
-              <div class="contact-text">
-                <h3>Correo electrónico</h3>
-                <a href="mailto:Tashiceramica@gmail.com">Tashiceramica@gmail.com</a>
-              </div>
-            </div>
-
-            <div class="contact-item">
-              <div class="contact-icon contact-icon-location">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                  <circle cx="12" cy="10" r="3" />
-                </svg>
-              </div>
-              <div class="contact-text">
-                <h3>Ubicación</h3>
-                <p>Carretera Al Xoconostle, Dolores Hidalgo, Gto. México.</p>
-              </div>
-            </div>
-
-            <div class="contact-item">
-              <div class="contact-icon contact-icon-social">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10" />
-                  <path
-                    d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32" />
-                </svg>
-              </div>
-              <div class="contact-text">
-                <h3>Síguenos</h3>
-                <div class="social-links">
-                  <a href="https://www.facebook.com/TashiCeramica" class="social-link" target="_blank" rel="noopener">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                      fill="currentColor">
-                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                    </svg>
-                    @TashiCeramica
-                  </a>
-                  <a href="https://www.instagram.com/tashi_ceramica_stoneware/" class="social-link" target="_blank"
-                    rel="noopener">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2">
-                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                    </svg>
-                    @tashi_ceramica_stoneware
-                  </a>
-                  <a href="https://www.tiktok.com/@tashi.ceramica" class="social-link" target="_blank" rel="noopener">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                      fill="currentColor">
-                      <path
-                        d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
-                    </svg>
-                    @tashi.ceramica
-                  </a>
-                  <a href="https://youtube.com/@tashiceramica" class="social-link" target="_blank" rel="noopener">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                      fill="currentColor">
-                      <path
-                        d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                    </svg>
-                    @tashiceramica
-                  </a>
+    <!-- About Section -->
+    <section id="sobre-mi">
+        <h2 class="section-title">Un Espacio Para Ti</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3 style="color: var(--primary-cyan); margin-bottom: 1.5rem; font-size: 1.8rem;">Porque Tus Emociones
+                    Merecen Ser Escuchadas</h3>
+                <p style="margin-bottom: 1.5rem; font-size: 1.05rem; line-height: 1.8;">
+                    Imagina vivir tu presente en plenitud, en paz con tu pasado y esperando por el futuro.
+                </p>
+                <p style="margin-bottom: 1.5rem; font-size: 1.05rem; line-height: 1.8;">
+                    Soy <strong>L.Psic. Mavi Bayona</strong>, y entiendo que buscar ayuda no es fácil. Por eso he
+                    dedicado mi vida
+                    profesional a crear un espacio donde puedas ser tú mismo/a sin juicios, donde cada palabra que
+                    compartas
+                    será escuchada con empatía y respeto.
+                </p>
+                <div
+                    style="background: var(--neutral-light); padding: 1.5rem; border-radius: 15px; border-left: 4px solid var(--primary-gold); margin: 2rem 0;">
+                    <h4 style="color: var(--accent-teal); margin-bottom: 1rem;">Lo que SÍ puedes lograr:</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.5rem;">✓ Reconocer que mereces sentirte bien</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Darte el permiso de buscar ayuda cuando la necesitas</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Aprender herramientas para gestionar tus emociones</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Vivir más presente y disfrutar momentos importantes</li>
+                    </ul>
                 </div>
-              </div>
+                <p style="font-size: 1.05rem; line-height: 1.8;">
+                    Mi metodología combina <strong>Psicoterapia, Tanatología y Logoterapia</strong> para darte
+                    herramientas reales que puedes aplicar desde la primera sesión. Trabajo activamente contigo
+                    para lograr cambios tangibles.
+                </p>
             </div>
-          </div>
-        </div>
+            <div class="about-image">
+                <div
+                    style="position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.2);">
+                    <img src="assets/maviBayona1.jpg" alt="L.Psic. Mavi Bayona - Psicoterapeuta"
+                        style="width: 100%; display: block; border-radius: 20px;" />
 
-        <div class="contact-form-container scroll-reveal">
-          <form class="contact-form" id="contactForm">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="nombre">Nombre</label>
-                <input type="text" id="nombre" name="nombre" required>
-              </div>
-              <div class="form-group">
-                <label for="apellido">Apellido</label>
-                <input type="text" id="apellido" name="apellido" required>
-              </div>
+                    <!-- Overlay de texto - Arriba a la izquierda con fondo blanco translúcido -->
+                    <div
+                        style="position: absolute; top: 2rem; left: 2rem; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 1.5rem 2rem; border-radius: 15px; max-width: 280px; box-shadow: 0 8px 30px rgba(0,0,0,0.2); border-left: 4px solid var(--primary-cyan);">
+                        <h4
+                            style="color: var(--primary-cyan); font-size: 1.2rem; margin-bottom: 0.8rem; font-weight: 700;">
+                            L.Psic. Mavi Bayona</h4>
+                        <p style="color: var(--text-dark); font-size: 0.9rem; line-height: 1.6; margin: 0;">
+                            Psicoterapeuta especializada en acompañarte hacia tu bienestar emocional.
+                            <strong style="color: var(--accent-teal);">Estoy aquí para ayudarte.</strong>
+                        </p>
+                    </div>
+                </div>
+
+                <div
+                    style="background: var(--gradient-primary); color: white; padding: 1.5rem; border-radius: 15px; margin-top: 1.5rem; text-align: center;">
+                    <p style="font-size: 1.1rem; font-weight: 500; margin-bottom: 0.5rem;">💬 "La mejor inversión es en
+                        ti mismo/a"</p>
+                    <p style="font-size: 0.95rem; opacity: 0.9;">Cuando estés listo/a, aquí estaré para acompañarte</p>
+                </div>
             </div>
-            <div class="form-group">
-              <label for="email">Correo electrónico *</label>
-              <input type="email" id="email" name="email" required>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" style="background: var(--neutral-light); position: relative;">
+        <!-- Logo marca de agua de fondo -->
+        <div
+            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.03; pointer-events: none; z-index: 0;">
+            <img src="assets/logoMavi.png" alt="Mavi Bayona" style="width: 300px; height: auto; object-fit: contain;">
+        </div>
+
+        <div style="position: relative; z-index: 1;">
+            <h2 class="section-title">¿En Qué Puedo Acompañarte?</h2>
+            <p
+                style="text-align: center; max-width: 800px; margin: -1rem auto 3rem; font-size: 1.1rem; color: var(--text-light);">
+                Cada servicio está diseñado para darte herramientas prácticas que puedes aplicar en tu día a día.
+            </p>
+            <div class="services-grid">
+                <div class="service-card" style="overflow: hidden; padding: 0;">
+                    <img src="assets/Psicoterapia.jpg" alt="Psicoterapia"
+                        style="width: 100%; height: 250px; object-fit: cover; border-radius: 20px 20px 0 0;">
+                    <div style="padding: 2rem 2rem 2.5rem;">
+                        <h3 style="color: var(--primary-cyan); margin-bottom: 1rem;">Psicoterapia</h3>
+                        <p style="font-weight: 600; color: var(--accent-teal); margin-bottom: 1rem;">Comprender tus
+                            emociones es el primer paso</p>
+                        <p style="margin-bottom: 1.5rem;">Podemos trabajar juntos en ansiedad, depresión, estrés o
+                            experiencias del pasado que aún te afectan.</p>
+                        <ul style="list-style: none; padding-left: 0; text-align: left; margin-bottom: 1.5rem;">
+                            <li style="margin-bottom: 0.8rem;"><strong>✓</strong> Identificar patrones de pensamiento
+                            </li>
+                            <li style="margin-bottom: 0.8rem;"><strong>✓</strong> Herramientas para la ansiedad y el
+                                estrés</li>
+                            <li style="margin-bottom: 0.8rem;"><strong>✓</strong> Fortalecer tu autoestima</li>
+                            <li style="margin-bottom: 0.8rem;"><strong>✓</strong> Procesar experiencias del pasado</li>
+                        </ul>
+                        <a href="#agendar"
+                            style="display: inline-block; background: var(--primary-cyan); color: white; padding: 0.8rem 1.5rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s;">Agendar Cita</a>
+                    </div>
+                </div>
+
+                <div class="service-card" style="overflow: hidden; padding: 0;">
+                    <img src="assets/Tanatologia.jpg" alt="Tanatología"
+                        style="width: 100%; height: 250px; object-fit: cover; border-radius: 20px 20px 0 0;">
+                    <div style="padding: 2rem 2rem 2.5rem;">
+                        <h3 style="color: var(--primary-cyan); margin-bottom: 1rem;">Tanatología</h3>
+                        <p style="font-weight: 600; color: var(--accent-teal); margin-bottom: 1rem;">Cuando una etapa
+                            termina, comienza el proceso</p>
+                        <p style="margin-bottom: 1.5rem;">El duelo es un camino que se recorre mejor acompañado. Podemos
+                            transitarlo juntos.</p>
+                        <ul style="list-style: none; padding-left: 0; text-align: left; margin-bottom: 1.5rem;">
+                            <li style="margin-bottom: 0.8rem;"><strong>✓</strong> Procesar el duelo a tu ritmo</li>
+                            <li style="margin-bottom: 0.8rem;"><strong>✓</strong> Honrar lo vivido</li>
+                            <li style="margin-bottom: 0.8rem;"><strong>✓</strong> Encontrar paz interior</li>
+                            <li style="margin-bottom: 0.8rem;"><strong>✓</strong> Continuar tu camino con esperanza</li>
+                        </ul>
+                        <a href="#agendar"
+                            style="display: inline-block; background: var(--primary-cyan); color: white; padding: 0.8rem 1.5rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s;">Agendar Cita</a>
+                    </div>
+                </div>
+
+                <div class="service-card" style="overflow: hidden; padding: 0;">
+                    <img src="assets/Logoterapia.jpg" alt="Logoterapia"
+                        style="width: 100%; height: 250px; object-fit: cover; border-radius: 20px 20px 0 0;">
+                    <div style="padding: 2rem 2rem 2.5rem;">
+                        <h3 style="color: var(--primary-cyan); margin-bottom: 1rem;">Logoterapia</h3>
+                        <p style="font-weight: 600; color: var(--accent-teal); margin-bottom: 1rem;">Encontrar sentido
+                            también es una forma de sanar</p>
+                        <p style="margin-bottom: 1.5rem;">Si sientes que algo falta en tu vida, podemos explorar juntos
+                            tu propósito y valores.</p>
+                        <ul style="list-style: none; padding-left: 0; text-align: left; margin-bottom: 1.5rem;">
+                            <li style="margin-bottom: 0.8rem;"><strong>✓</strong> Explorar tu propósito de vida</li>
+                            <li style="margin-bottom: 0.8rem;"><strong>✓</strong> Reconectar con tus valores</li>
+                            <li style="margin-bottom: 0.8rem;"><strong>✓</strong> Navegar momentos de búsqueda</li>
+                            <li style="margin-bottom: 0.8rem;"><strong>✓</strong> Vivir con mayor significado</li>
+                        </ul>
+                        <a href="#agendar"
+                            style="display: inline-block; background: var(--primary-cyan); color: white; padding: 0.8rem 1.5rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s;">Agendar Cita</a>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-              <label for="mensaje">Mensaje</label>
-              <textarea id="mensaje" name="mensaje" rows="6" required></textarea>
+
+            <div
+                style="background: white; max-width: 900px; margin: 4rem auto 0; padding: 3rem; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); text-align: center;">
+                <h3 style="color: var(--primary-cyan); font-size: 2rem; margin-bottom: 1.5rem;">💙 Dar el primer paso es
+                    valiente</h3>
+                <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem;">
+                    Sé que buscar ayuda no es fácil, y llegar hasta aquí ya dice mucho de ti.<br>
+                    Cuando sientas que es el momento adecuado, estaré aquí para acompañarte.
+                </p>
+                <a href="#agendar" class="cta-button" style="font-size: 1.1rem; padding: 1.2rem 3rem;">Agendar Cita</a>
             </div>
-            <button type="submit" class="submit-btn">Enviar</button>
-          </form>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <img src="assets/LOGO_COMPLETO_TASHI_Dorado.png" alt="Tashi Cerámica" class="footer-logo-img">
-          <p>Artesanías para conquistar tu corazón</p>
+    <!-- Test Diagnóstico Section -->
+    <section id="test" style="background: var(--neutral-light);">
+        <!-- Sección de Test Diagnóstico -->
+        <div
+            style="background: linear-gradient(135deg, #1B9AAA 0%, #06D6A0 100%); max-width: 1000px; margin: 0 auto; padding: 3.5rem 3rem; border-radius: 20px; box-shadow: 0 15px 50px rgba(27, 154, 170, 0.3); text-align: center; color: white; position: relative; overflow: hidden;">
+            <!-- Decoración de fondo -->
+            <div
+                style="position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: rgba(255, 255, 255, 0.05); border-radius: 50%;">
+            </div>
+            <div
+                style="position: absolute; bottom: -30px; left: -30px; width: 150px; height: 150px; background: rgba(255, 255, 255, 0.05); border-radius: 50%;">
+            </div>
+
+            <div style="position: relative; z-index: 1;">
+                <div style="margin-bottom: 2rem;">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        style="filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));">
+                        <rect x="4" y="4" width="16" height="16" rx="2" stroke="white" stroke-width="2" fill="none" />
+                        <path d="M8 12L11 15L16 9" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <circle cx="19" cy="5" r="2" fill="#D4AF37" />
+                    </svg>
+                </div>
+
+                <h3
+                    style="font-size: 2.2rem; margin-bottom: 1.5rem; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
+                    ¿Quieres entender mejor cómo te sientes?
+                </h3>
+
+                <p
+                    style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2.5rem; opacity: 0.95; max-width: 700px; margin-left: auto; margin-right: auto;">
+                    A veces es difícil poner en palabras lo que sentimos. Este test puede ayudarte a
+                    identificar qué está afectando tu bienestar emocional, para que juntos podamos trabajar en ello.
+                </p>
+
+                <div
+                    style="background: rgba(255, 255, 255, 0.15); padding: 1.5rem; border-radius: 15px; margin-bottom: 2.5rem; backdrop-filter: blur(10px);">
+                    <p
+                        style="font-size: 1rem; margin: 0; display: flex; align-items: center; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                        <span style="display: flex; align-items: center; gap: 0.5rem;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" fill="none" />
+                                <path d="M12 6V12L16 14" stroke="white" stroke-width="2" stroke-linecap="round" />
+                            </svg>
+                            <strong>Solo 5 minutos</strong>
+                        </span>
+                        <span style="display: flex; align-items: center; gap: 0.5rem;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect x="5" y="11" width="14" height="10" rx="2" stroke="white" stroke-width="2"
+                                    fill="none" />
+                                <path d="M12 15V17" stroke="white" stroke-width="2" stroke-linecap="round" />
+                                <path d="M9 11V7C9 5.34315 10.3431 4 12 4C13.6569 4 15 5.34315 15 7V11" stroke="white"
+                                    stroke-width="2" stroke-linecap="round" />
+                            </svg>
+                            <strong>100% Confidencial</strong>
+                        </span>
+                        <span style="display: flex; align-items: center; gap: 0.5rem;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 6L9 17L4 12" stroke="white" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <strong>Resultados Inmediatos</strong>
+                        </span>
+                    </p>
+                </div>
+
+                <a href="pages/test.html" class="cta-button"
+                    style="background: white; color: var(--primary-cyan); padding: 1.3rem 3rem; font-size: 1.15rem; display: inline-flex; align-items: center; gap: 0.8rem; box-shadow: 0 6px 20px rgba(0,0,0,0.15);">
+                    <span>Realizar Test</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </a>
+
+                <p
+                    style="font-size: 0.9rem; margin-top: 1.5rem; opacity: 0.9; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" fill="none" />
+                        <path d="M12 16V12M12 8H12.01" stroke="white" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                    El test no reemplaza una consulta profesional, pero es un excelente primer paso
+                </p>
+            </div>
         </div>
-        <div class="footer-links">
-          <h4>Enlaces</h4>
-          <ul>
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#nosotros">Nosotros</a></li>
-            <li><a href="#proceso">Proceso</a></li>
-            <li><a href="#galeria">Galería</a></li>
-          </ul>
+    </section>
+
+    <!-- Cal.com Booking Section con Pestañas (NUEVA) -->
+    <section id="agendar"
+        style="padding: 100px 20px; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); position: relative; overflow: hidden;">
+        <div style="max-width: 1000px; margin: 0 auto; position: relative; z-index: 1;">
+            <!-- Header -->
+            <div style="text-align: center; margin-bottom: 50px;">
+                <h2 style="font-size: 2.5rem; color: #1B9AAA; margin-bottom: 20px; font-weight: 700;">Agenda tu Sesión
+                </h2>
+                <p style="font-size: 1.1rem; color: #666; max-width: 700px; margin: 0 auto; line-height: 1.6;">
+                    Elige el tipo de terapia y el horario que mejor se ajuste a ti. El pago es seguro y la confirmación
+                    es inmediata.
+                </p>
+            </div>
+
+            <!-- Pestañas -->
+            <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
+                <button onclick="switchTab('individual')" id="tab-individual"
+                    style="padding: 1rem 2rem; background: #1B9AAA; color: white; border: none; border-radius: 50px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(27, 154, 170, 0.3);">
+                    👤 Terapia Individual
+                </button>
+                <button onclick="switchTab('pareja')" id="tab-pareja"
+                    style="padding: 1rem 2rem; background: white; color: #1B9AAA; border: 2px solid #1B9AAA; border-radius: 50px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s;">
+                    💑 Terapia en Pareja
+                </button>
+            </div>
+
+            <!-- Descripción de cada tipo de terapia -->
+            <div id="desc-individual"
+                style="background: rgba(27, 154, 170, 0.1); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid #1B9AAA;">
+                <h3 style="color: #1B9AAA; font-size: 1.3rem; margin-bottom: 0.8rem;">Terapia Individual - 50 minutos
+                </h3>
+                <p style="color: #555; margin: 0; line-height: 1.6;">
+                    Espacio personal para trabajar en tus emociones, pensamientos y bienestar. Ideal para ansiedad,
+                    depresión, duelo, búsqueda de sentido o crecimiento personal.
+                </p>
+            </div>
+
+            <div id="desc-pareja"
+                style="background: rgba(27, 154, 170, 0.1); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid #1B9AAA; display: none;">
+                <h3 style="color: #1B9AAA; font-size: 1.3rem; margin-bottom: 0.8rem;">Terapia en Pareja - 50 minutos
+                </h3>
+                <p style="color: #555; margin: 0; line-height: 1.6;">
+                    Sesión diseñada para parejas que buscan mejorar su comunicación, resolver conflictos o fortalecer su
+                    relación. Ambos participan activamente en el proceso.
+                </p>
+            </div>
+
+            <!-- Contenedor de Widgets -->
+            <div
+                style="background: white; border-radius: 16px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1); overflow: hidden; margin-bottom: 40px; position: relative;">
+                <div
+                    style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #1B9AAA 0%, #06D6A0 100%);">
+                </div>
+
+                <!-- Widget Terapia Individual -->
+                <div id="widget-individual" style="width:100%;height:100%;overflow:scroll;min-height:700px"></div>
+
+                <!-- Widget Terapia en Pareja -->
+                <div id="widget-pareja" style="width:100%;height:100%;overflow:scroll;min-height:700px;display:none;">
+                </div>
+            </div>
+
+            <!-- Información adicional -->
+            <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px; margin-top: 40px;">
+                <div
+                    style="display: flex; align-items: center; gap: 12px; color: #555; flex: 1; min-width: 250px; justify-content: center;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B9AAA" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                    <p style="margin: 0; font-size: 0.95rem;">Pago 100% seguro con Stripe</p>
+                </div>
+                <div
+                    style="display: flex; align-items: center; gap: 12px; color: #555; flex: 1; min-width: 250px; justify-content: center;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B9AAA" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                        <line x1="16" y1="2" x2="16" y2="6" />
+                        <line x1="8" y1="2" x2="8" y2="6" />
+                        <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg>
+                    <p style="margin: 0; font-size: 0.95rem;">Elige fecha y hora que prefieras</p>
+                </div>
+                <div
+                    style="display: flex; align-items: center; gap: 12px; color: #555; flex: 1; min-width: 250px; justify-content: center;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B9AAA" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                    <p style="margin: 0; font-size: 0.95rem;">Confirmación inmediata por email</p>
+                </div>
+            </div>
+
+            <!-- Alternativa -->
+            <div style="text-align: center; margin-top: 3rem;">
+                <p style="color: #666; font-size: 0.95rem;">
+                    ¿Prefieres que te contacte primero? <a href="#formulario-contacto"
+                        style="color: #1B9AAA; font-weight: 600; text-decoration: underline;">Usa el formulario
+                        tradicional</a>
+                </p>
+            </div>
         </div>
-        <div class="footer-contact">
-          <h4>Contacto</h4>
-          <p>Carretera Al Xoconostle, Dolores Hidalgo, Gto. México</p>
-          <p><a href="mailto:Tashiceramica@gmail.com">Tashiceramica@gmail.com</a></p>
-          <p>+52 1 462 139 9584</p>
+    </section>
+
+    <!-- Formulario de Contacto Alternativo (RENOMBRADO) -->
+    <section id="formulario-contacto">
+        <h2 class="section-title">O Conversemos Primero</h2>
+        <p
+            style="text-align: center; max-width: 800px; margin: -1rem auto 3rem; font-size: 1.15rem; color: var(--text-light);">
+            Si prefieres que te contacte antes de agendar, completa este formulario.<br>
+            <strong style="color: var(--primary-cyan);">Sin presiones. Sin juicios. A tu ritmo.</strong>
+        </p>
+
+        <!-- Logo decorativo arriba del formulario -->
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <img src="assets/logoMavi.png" alt="Mavi Bayona Logo"
+                style="width: 60px; height: auto; opacity: 0.9; animation: fadeInUp 1s ease; object-fit: contain; display: block; margin: 0 auto;">
+            <img src="assets/mavibayona-logo.png" alt="Mavi Bayona"
+                style="width: 150px; height: auto; opacity: 0.85; margin-top: 0.5rem; object-fit: contain; display: block; margin-left: auto; margin-right: auto;">
         </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 Tashi Cerámica. Todos los derechos reservados.</p>
-      </div>
-    </div>
-  </footer>
 
-  <!-- Botón Scroll to Top -->
-  <button class="scroll-to-top" id="scrollToTop">↑</button>
+        <div class="appointment-form">
+            <div id="successMessage" class="success-message">
+                <span style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                    ¡Excelente decisión! Tu solicitud ha sido enviada. Te contactaré pronto para confirmar tu sesión.
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        style="display: inline-block;">
+                        <path
+                            d="M12 2C12 2 10.5 4 9 6C7.5 8 6 10 6 12C6 14 7 15 8.5 15.5C10 16 11 16 12 15C13 16 14 16 15.5 15.5C17 15 18 14 18 12C18 10 16.5 8 15 6C13.5 4 12 2 12 2Z"
+                            fill="white" />
+                        <path d="M4 8C4 8 2 9 2 11C2 13 3 14 4.5 14C6 14 7 13 7 11.5C7 10 6 9 4 8Z" fill="white"
+                            opacity="0.8" />
+                        <path d="M20 8C20 8 22 9 22 11C22 13 21 14 19.5 14C18 14 17 13 17 11.5C17 10 18 9 20 8Z"
+                            fill="white" opacity="0.8" />
+                    </svg>
+                </span>
+            </div>
 
-  <!-- Modal Galería -->
-  <div class="modal-overlay" id="galleryModal">
-    <div class="modal-container">
-      <button class="modal-close" onclick="closeGalleryModal()">✕</button>
-      <h2>Todas las Creaciones</h2>
-      <div class="modal-gallery-grid" id="modalGalleryGrid"></div>
-    </div>
-  </div>
+            <div
+                style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 15px; margin-bottom: 2rem; border-left: 4px solid var(--primary-gold);">
+                <p style="font-size: 1.05rem; line-height: 1.7; margin: 0;">
+                    🔒 <strong>Compromiso de Confidencialidad:</strong> Todo lo que compartas conmigo permanece en
+                    absoluta confidencialidad. Este es tu espacio seguro.
+                </p>
+            </div>
 
-  <!-- Modal Clientes -->
-  <div class="modal-overlay" id="clientesModal">
-    <div class="modal-container">
-      <button class="modal-close" onclick="closeClientesModal()">✕</button>
-      <h2>Todos los Clientes</h2>
-      <div class="modal-gallery-grid" id="modalClientesGrid"></div>
-    </div>
-  </div>
+            <!-- FORMULARIO CON FORMSPREE -->
+            <form id="appointmentForm" action="https://formspree.io/f/mwpgbdge" method="POST">
+                <div class="form-group">
+                    <label for="nombre">Tu Nombre Completo *</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ej. María González" required>
+                </div>
 
-  <script src="js/scripts.js"></script>
+                <div class="form-group">
+                    <label for="email">Tu Correo Electrónico *</label>
+                    <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono">Tu Teléfono (preferiblemente WhatsApp) *</label>
+                    <input type="tel" id="telefono" name="telefono" placeholder="+52 777 123 4567" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="servicio">¿Qué Servicio Necesitas? *</label>
+                    <select id="servicio" name="servicio" required>
+                        <option value="">Selecciona el servicio que más resuena contigo</option>
+                        <option value="psicoterapia">💭 Psicoterapia - Ansiedad, depresión, estrés</option>
+                        <option value="tanatologia">🕊️ Tanatología - Duelo y pérdidas</option>
+                        <option value="logoterapia">✨ Logoterapia - Búsqueda de sentido</option>
+                        <option value="consulta-general">🤝 No estoy seguro/a, necesito orientación</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="fecha-preferida">¿Cuándo Te Gustaría Tu Primera Sesión?</label>
+                    <input type="date" id="fecha-preferida" name="fecha_preferida">
+                    <small style="opacity: 0.9; display: block; margin-top: 0.5rem;">Propondré horarios disponibles
+                        cercanos a esta fecha</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="motivo">Cuéntame: ¿Qué Te Está Pasando? *</label>
+                    <select id="motivo" name="motivo" required>
+                        <option value="">Selecciona la opción que mejor te describe</option>
+                        <option value="ansiedad">Siento ansiedad, estrés o nerviosismo constante</option>
+                        <option value="depresion">Siento tristeza profunda, depresión o falta de ánimo</option>
+                        <option value="duelo">Estoy pasando por un duelo (pérdida de un ser querido, ruptura, etc.)</option>
+                        <option value="vacio">Siento un vacío o falta de sentido en mi vida</option>
+                        <option value="pareja">Tengo problemas con mi pareja o relaciones</option>
+                        <option value="otro">Otro / Prefiero explicarlo en la sesión</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="horario">Preferencia de Horario</label>
+                    <select id="horario" name="horario_preferido">
+                        <option value="">Selecciona tu horario preferido</option>
+                        <option value="manana">Mañanas (9:00 AM - 12:00 PM)</option>
+                        <option value="tarde">Tardes (12:00 PM - 5:00 PM)</option>
+                        <option value="noche">Noches (5:00 PM - 8:00 PM)</option>
+                        <option value="flexible">Soy flexible / A convenir</option>
+                    </select>
+                </div>
+
+                <div
+                    style="background: rgba(255,255,255,0.15); padding: 1.2rem; border-radius: 10px; margin-bottom: 1.5rem; text-align: center;">
+                    <p style="margin: 0; font-size: 0.95rem; line-height: 1.6;">
+                        ⏰ <strong>Te responderé en menos de 24 horas</strong><br>
+                        Generalmente confirmo las citas el mismo día
+                    </p>
+                </div>
+
+                <button type="submit" class="submit-button">Solicitar Primera Sesión</button>
+
+                <p style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem; opacity: 0.9;">
+                    Al enviar este formulario aceptas que me contacte para agendar tu sesión
+                </p>
+            </form>
+        </div>
+    </section>
+
+    <section id="contacto" style="background: var(--neutral-light);">
+        <h2 class="section-title">Contacto</h2>
+
+        <!-- Logo central decorativo -->
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <img src="assets/logoMavi.png" alt="Mavi Bayona Logo"
+                style="width: 70px; height: auto; opacity: 0.85; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.1)); object-fit: contain; display: block; margin: 0 auto;">
+            <img src="assets/mavibayona-logo.png" alt="Mavi Bayona"
+                style="width: 160px; height: auto; opacity: 0.8; margin-top: 0.8rem; object-fit: contain; display: block; margin-left: auto; margin-right: auto;">
+            <p style="margin-top: 1rem; color: var(--primary-cyan); font-weight: 600; font-size: 1.1rem;">Estoy aquí
+                para acompañarte</p>
+        </div>
+
+        <div class="contact-info">
+            <div class="contact-item">
+                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="32" cy="32" r="26" fill="#06D6A0" opacity="0.2" />
+                    <path
+                        d="M32 10C19.3 10 9 20.3 9 33C9 37.4 10.3 41.5 12.5 45L9 55L19.5 51.6C22.8 53.6 26.7 55 31 55C43.7 55 54 44.7 54 32C54 19.3 43.7 9 31 9L32 10Z"
+                        stroke="#1B9AAA" stroke-width="2.5" fill="none" />
+                    <path
+                        d="M24 24C24 24 25 22 27 22C28 22 29 23 29 24C29 25 28 26 27 27C26 28 25 29 25 31C25 33 27 35 29 37C31 39 33 41 35 41C37 41 38 40 39 39C40 38 41 37 42 37C43 37 44 38 44 39C44 41 42 42 42 42C42 42 39 45 35 45C31 45 27 43 24 40C21 37 19 33 19 29C19 25 22 22 22 22"
+                        fill="#D4AF37" />
+                </svg>
+                <h3 style="color: var(--primary-cyan); margin-bottom: 0.5rem;">WhatsApp</h3>
+                <p>Contáctame directamente</p>
+                <a href="https://wa.me/5216181089265"
+                    style="color: var(--primary-cyan); text-decoration: none; font-weight: bold;">Enviar mensaje</a>
+            </div>
+
+            <div class="contact-item">
+                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="8" y="16" width="48" height="32" rx="4" fill="#06D6A0" opacity="0.2" />
+                    <rect x="8" y="16" width="48" height="32" rx="4" stroke="#1B9AAA" stroke-width="2.5" fill="none" />
+                    <path d="M8 20L32 36L56 20" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M8 44L22 32M56 44L42 32" stroke="#1B9AAA" stroke-width="2" stroke-linecap="round" />
+                </svg>
+                <h3 style="color: var(--primary-cyan); margin-bottom: 0.5rem;">Email</h3>
+                <p><a href="/cdn-cgi/l/email-protection#0b666a7d6269656a797d6a6e714b6c666a626725686466" style="color: var(--primary-cyan); text-decoration: none;"><span class="__cf_email__" data-cfemail="8ae7ebfce3e8e4ebf8fcebeff0caede7ebe3e6a4e9e5e7">[email&#160;protected]</span></a></p>
+            </div>
+
+            <div class="contact-item">
+                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="32" cy="32" r="26" fill="#1B9AAA" opacity="0.2" />
+                    <circle cx="32" cy="32" r="26" stroke="#1B9AAA" stroke-width="2.5" fill="none" />
+                    <path
+                        d="M38 22H34C32 22 30 23 30 25V28H26V34H30V50H36V34H40L42 28H36V26C36 25 37 24 38 24H42V18C42 18 40 18 38 18C35 18 32 20 32 23V28H38V22Z"
+                        fill="#06D6A0" />
+                    <rect x="34" y="28" width="4" height="6" fill="#D4AF37" />
+                </svg>
+                <h3 style="color: var(--primary-cyan); margin-bottom: 0.5rem;">Facebook</h3>
+                <p>Sígueme en redes</p>
+                <a href="https://www.facebook.com/share/17NcimN3gD/" target="_blank"
+                    style="color: var(--primary-cyan); text-decoration: none; font-weight: bold;">Visitar página</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <!-- Logos en el footer -->
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem;">
+            <img src="assets/logoMavi.png" alt="Mavi Bayona Logo"
+                style="width: 50px; height: auto; opacity: 0.8; filter: brightness(0) invert(1); object-fit: contain; display: block;">
+            <img src="assets/mavibayona-logo.png" alt="Mavi Bayona"
+                style="width: 150px; height: auto; opacity: 0.9; filter: brightness(0) invert(1); object-fit: contain; display: block;">
+        </div>
+
+        <p>&copy; 2025 Mavi Bayona - Psicoterapeuta, Tanatóloga, Logoterapeuta</p>
+        <p
+            style="margin-top: 0.5rem; opacity: 0.8; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+            Cuidando tus emociones
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                style="display: inline-block;">
+                <path
+                    d="M12 2C12 2 10.5 4 9 6C7.5 8 6 10 6 12C6 14 7 15 8.5 15.5C10 16 11 16 12 15C13 16 14 16 15.5 15.5C17 15 18 14 18 12C18 10 16.5 8 15 6C13.5 4 12 2 12 2Z"
+                    fill="#D4AF37" />
+                <path d="M4 8C4 8 2 9 2 11C2 13 3 14 4.5 14C6 14 7 13 7 11.5C7 10 6 9 4 8Z" fill="#06D6A0" />
+                <path d="M20 8C20 8 22 9 22 11C22 13 21 14 19.5 14C18 14 17 13 17 11.5C17 10 18 9 20 8Z"
+                    fill="#06D6A0" />
+            </svg>
+        </p>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const button = document.querySelector('.mobile-menu-button');
+            const menu = document.getElementById('mobileMenu');
+
+            button.classList.toggle('active');
+            menu.classList.toggle('active');
+        }
+
+        function closeMobileMenu() {
+            const button = document.querySelector('.mobile-menu-button');
+            const menu = document.getElementById('mobileMenu');
+
+            button.classList.remove('active');
+            menu.classList.remove('active');
+        }
+
+        // Active link tracking
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.pill-nav-items a, .mobile-menu a');
+
+            function updateActiveLink() {
+                let current = '';
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 150)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', updateActiveLink);
+            updateActiveLink();
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form handling con Formspree
+        document.getElementById('appointmentForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const form = e.target;
+            const formData = new FormData(form);
+            const submitButton = form.querySelector('.submit-button');
+            const successMessage = document.getElementById('successMessage');
+
+            // Deshabilitar botón durante el envío
+            submitButton.disabled = true;
+            submitButton.textContent = 'Enviando...';
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Mostrar mensaje de éxito
+                    if (successMessage) {
+                        successMessage.style.display = 'block';
+                        successMessage.classList.add('show');
+                    }
+
+                    // Resetear formulario
+                    form.reset();
+
+                    // Scroll al mensaje de éxito
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                    // Restaurar botón
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Solicitar Primera Sesión';
+                } else {
+                    throw new Error('Error en el envío');
+                }
+            } catch (error) {
+                alert('Hubo un problema al enviar el formulario. Por favor, intenta nuevamente o contáctame directamente por WhatsApp.');
+                submitButton.disabled = false;
+                submitButton.textContent = 'Solicitar Primera Sesión';
+            }
+        });
+    </script>
+
+    <!-- Cal.com Embed Script Oficial - Dual Calendar -->
+    <script type="text/javascript">
+        (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+
+        // Inicializar calendario de Terapia Individual
+        Cal("init", "individual", { origin: "https://app.cal.com" });
+        Cal.ns["individual"]("inline", {
+            elementOrSelector: "#widget-individual",
+            config: { "layout": "month_view" },
+            calLink: "mavibayona/50min",
+        });
+        Cal.ns["individual"]("ui", { "hideEventTypeDetails": false, "layout": "month_view" });
+
+        // Inicializar calendario de Terapia en Pareja
+        Cal("init", "pareja", { origin: "https://app.cal.com" });
+        Cal.ns["pareja"]("inline", {
+            elementOrSelector: "#widget-pareja",
+            config: { "layout": "month_view" },
+            calLink: "mavibayona/50-minutos",
+        });
+        Cal.ns["pareja"]("ui", { "hideEventTypeDetails": false, "layout": "month_view" });
+
+        // Función para cambiar entre pestañas
+        function switchTab(type) {
+            // Actualizar botones
+            const btnIndividual = document.getElementById('tab-individual');
+            const btnPareja = document.getElementById('tab-pareja');
+            const descIndividual = document.getElementById('desc-individual');
+            const descPareja = document.getElementById('desc-pareja');
+            const widgetIndividual = document.getElementById('widget-individual');
+            const widgetPareja = document.getElementById('widget-pareja');
+
+            if (type === 'individual') {
+                // Estilos activos para Individual
+                btnIndividual.style.background = '#1B9AAA';
+                btnIndividual.style.color = 'white';
+                btnIndividual.style.border = 'none';
+                btnIndividual.style.boxShadow = '0 4px 15px rgba(27, 154, 170, 0.3)';
+
+                // Estilos inactivos para Pareja
+                btnPareja.style.background = 'white';
+                btnPareja.style.color = '#1B9AAA';
+                btnPareja.style.border = '2px solid #1B9AAA';
+                btnPareja.style.boxShadow = 'none';
+
+                // Mostrar contenido Individual
+                descIndividual.style.display = 'block';
+                descPareja.style.display = 'none';
+                widgetIndividual.style.display = 'block';
+                widgetPareja.style.display = 'none';
+            } else {
+                // Estilos activos para Pareja
+                btnPareja.style.background = '#1B9AAA';
+                btnPareja.style.color = 'white';
+                btnPareja.style.border = 'none';
+                btnPareja.style.boxShadow = '0 4px 15px rgba(27, 154, 170, 0.3)';
+
+                // Estilos inactivos para Individual
+                btnIndividual.style.background = 'white';
+                btnIndividual.style.color = '#1B9AAA';
+                btnIndividual.style.border = '2px solid #1B9AAA';
+                btnIndividual.style.boxShadow = 'none';
+
+                // Mostrar contenido Pareja
+                descPareja.style.display = 'block';
+                    descIndividual.style.display = 'none';
+                widgetPareja.style.display = 'block';
+                widgetIndividual.style.display = 'none';
+            }
+        }
+    </script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.remove('active');
+        }
+
+        // Smooth scroll para todos los enlaces
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Cambiar header al hacer scroll
+        window.addEventListener('scroll', function () {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
+            } else {
+                header.style.background = 'transparent';
+                header.style.boxShadow = 'none';
+            }
+        });
+    </script>
 </body>
 
 </html>
