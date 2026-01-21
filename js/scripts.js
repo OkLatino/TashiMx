@@ -2,6 +2,131 @@
 // DOM CONTENT LOADED - INICIO
 // ========================================
 
+// Función lightbox simple (Global)
+function openLightbox(src, alt, caption) {
+    // Crear overlay si no existe
+    let lightbox = document.getElementById('carousel-lightbox');
+    if (!lightbox) {
+        lightbox = document.createElement('div');
+        lightbox.id = 'carousel-lightbox';
+        lightbox.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 20000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 2rem;
+            cursor: pointer;
+        `;
+
+        const img = document.createElement('img');
+        img.style.cssText = `
+            max-width: 90%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 10px;
+        `;
+
+        const captionEl = document.createElement('div');
+        captionEl.style.cssText = `
+            color: white;
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        `;
+
+        const closeBtn = document.createElement('button');
+        closeBtn.innerHTML = '✕';
+        closeBtn.style.cssText = `
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        `;
+
+        lightbox.appendChild(img);
+        lightbox.appendChild(captionEl);
+        lightbox.appendChild(closeBtn);
+        document.body.appendChild(lightbox);
+
+        // Cerrar al hacer click
+        lightbox.addEventListener('click', function (e) {
+            if (e.target === lightbox || e.target === closeBtn) {
+                lightbox.style.display = 'none';
+            }
+        });
+    }
+
+    // Mostrar lightbox con la imagen
+    const img = lightbox.querySelector('img');
+    const captionEl = lightbox.querySelectorAll('div')[0];
+    img.src = src;
+    img.alt = alt;
+    captionEl.textContent = caption;
+    lightbox.style.display = 'flex';
+}
+
+// Colores de la marca para efectos dinámicos
+const brandColors = [
+    '#FF6B35', // secondary
+    '#F7931E', // accent
+    '#E91E63', // pink
+    '#9C27B0', // purple
+    '#2196F3', // blue
+    '#00BCD4', // teal
+    '#4CAF50', // green
+    '#003DA5', // ceramic-azul
+    '#FFD700', // ceramic-amarillo
+    '#EC407A'  // ceramic-rosa
+];
+
+function applyRandomHoverEffect(container) {
+    const img = container.querySelector('img');
+    const caption = container.querySelector('.carousel-caption, .modal-gallery-caption');
+
+    container.addEventListener('mouseenter', () => {
+        const randomColor = brandColors[Math.floor(Math.random() * brandColors.length)];
+
+        if (img) {
+            img.style.boxShadow = `0 15px 40px ${randomColor}80`; // 50% opacity hex
+            img.style.transform = 'translateY(-10px) scale(1.02)';
+        }
+        if (caption) {
+            caption.style.backgroundColor = randomColor;
+            caption.style.color = 'white';
+            caption.style.boxShadow = `0 4px 15px ${randomColor}66`;
+        }
+    });
+
+    container.addEventListener('mouseleave', () => {
+        if (img) {
+            img.style.boxShadow = '';
+            img.style.transform = '';
+        }
+        if (caption) {
+            caption.style.backgroundColor = 'transparent';
+            caption.style.color = ''; // Reverts to CSS default
+            caption.style.boxShadow = 'none';
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
 
     // Navbar scroll effect
@@ -1032,7 +1157,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ========================================
-    // CARRUSELES HORIZONTALES INFINITOS
+    // CARRUSELES HORIZONTALES INFINITOS INTERACTIVOS
     // ========================================
 
     function initHorizontalCarousels() {
@@ -1040,156 +1165,205 @@ document.addEventListener('DOMContentLoaded', () => {
 
         carousels.forEach(carousel => {
             const track = carousel.querySelector('.carousel-track');
-            const items = Array.from(track.children);
-            const speed = carousel.dataset.speed || 30;
-            const leftBtn = carousel.querySelector('.carousel-nav-left');
-            const rightBtn = carousel.querySelector('.carousel-nav-right');
+            const originalItems = Array.from(track.children);
 
-            // Duplicar items para crear efecto infinito
-            items.forEach(item => {
+            // Configuración
+            // Velocidad base: Pixeles por frame (aprox 60fps). 
+            // 75 data-speed era para CSS segundos. En JS necesitamos algo como 1-2 px/frame.
+            // Ajustamos para que se sienta similar: data-speed 100 -> ~1px/frame
+            let baseSpeed = (parseInt(carousel.dataset.speed) || 50) / 60;
+            const direction = carousel.classList.contains('carousel-right-to-left') ? 1 : -1; // 1 = se mueve a la derecha (items van a la izq), -1 viceversa?
+            // CSS era: left-to-right -> translateX goes 0 to -50% (items move LEFT physically to show right ones?)
+            // Espera, left-to-right visualmente: cosas entran por la izq y van a la derecha. Transform positivo.
+            // right-to-left: cosas entran por la der y van a la izq. Transform negativo.
+
+            // Revisando CSS original:
+            // .carousel-left-to-right .carousel-track { animation-name: scrollLeft; } -> 0 to -50% (Mueve a la IZQUIERDA visualmente los items)
+            // .carousel-right-to-left .carousel-track { animation-name: scrollRight; } -> -50% to 0 (Mueve a la DERECHA visualmente)
+
+            // Vamos a simplificar:
+            // Auto-scroll direction: 
+            // carousel-left-to-right (User view): Items should move LEFT (so we see new ones from right? No, typically "Left to Right" means flow direction).
+            // Let's stick to the visual effect of the previous CSS:
+            // scrollLeft keyframe: 0 -> -50%. The div moves to the LEFT. Items appear scanning right-to-left.
+            // scrollRight keyframe: -50% -> 0. The div moves to the RIGHT. Items appear scanning left-to-right.
+
+            let autoSpeed = baseSpeed;
+            if (carousel.classList.contains('carousel-left-to-right')) {
+                autoSpeed = -baseSpeed; // Mueve hacia la izquierda (valores negativos)
+            } else {
+                autoSpeed = baseSpeed; // Mueve hacia la derecha (valores positivos)
+            }
+
+            // Duplicar items suficientes veces para que el scroll sea infinito y fluido
+            // (Duplicamos 2 veces para tener [original][clone][clone] y manejar el wrap cómodamente)
+            originalItems.forEach(item => {
+                const clone = item.cloneNode(true);
+                track.appendChild(clone);
+            });
+            // Una vez más por seguridad en pantallas muy anchas
+            originalItems.forEach(item => {
                 const clone = item.cloneNode(true);
                 track.appendChild(clone);
             });
 
-            // Calcular duración de la animación basada en el ancho total
-            const totalWidth = track.scrollWidth / 2;
-            const duration = totalWidth / speed;
+            // Eliminar animación CSS
+            track.style.animation = 'none';
 
-            track.style.animationDuration = `${duration}s`;
+            // Variables de estado
+            let currentX = 0;
+            let isDragging = false;
+            let startX = 0;
+            let lastX = 0;
+            let velocity = 0;
+            let isHovering = false;
+            let animationId;
 
-            // Variables para control
-            let currentTranslate = 0;
-            let isPaused = false;
+            // Medidas importantes
+            // El punto de quiebre es el ancho de un set original completo
 
-            // Función para mover el carrusel
-            function moveCarousel(direction) {
-                const itemWidth = items[0].offsetWidth + 32; // width + gap
-                if (direction === 'left') {
-                    currentTranslate += itemWidth;
-                } else {
-                    currentTranslate -= itemWidth;
+            // Necesitamos esperar a que se renderice bien para medir, pero window.load ya pasó.
+            // Calculamos ancho del set original
+            // Asumimos gap de 2rem (32px)
+            const gap = 32;
+            let singleSetWidth = 0;
+            originalItems.forEach(item => {
+                singleSetWidth += item.offsetWidth + gap;
+            });
+
+            // Ajuste inicial para right-to-left (empezar en -singleSetWidth para tener buffer a la izq)
+            if (autoSpeed > 0) {
+                currentX = -singleSetWidth;
+            }
+
+            // -- EVENT LISTENERS PARA DRAG --
+
+            // Mouse
+            carousel.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startX = e.pageX;
+                lastX = startX;
+                velocity = 0;
+                carousel.style.cursor = 'grabbing';
+                track.style.transition = 'none';
+                e.preventDefault(); // Evitar selección de texto
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                const x = e.pageX;
+                const delta = x - lastX;
+                currentX += delta;
+                lastX = x;
+                // Calcular velocidad instantánea para inercia (opcional, simple por ahora)
+                velocity = delta;
+            });
+
+            window.addEventListener('mouseup', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    carousel.style.cursor = 'grab';
                 }
-                track.style.transform = `translateX(${currentTranslate}px)`;
-                track.style.transition = 'transform 0.5s ease';
+            });
 
-                setTimeout(() => {
-                    track.style.transition = '';
-                }, 500);
-            }
+            // Touch
+            carousel.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                startX = e.touches[0].pageX;
+                lastX = startX;
+                velocity = 0;
+                track.style.transition = 'none';
+            }, { passive: true });
 
-            // Event listeners para las flechas
-            if (leftBtn) {
-                leftBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    moveCarousel('left');
-                });
-            }
+            window.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                const x = e.touches[0].pageX;
+                const delta = x - lastX;
+                currentX += delta;
+                lastX = x;
+                velocity = delta;
+            }, { passive: true });
 
-            if (rightBtn) {
-                rightBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    moveCarousel('right');
-                });
-            }
+            window.addEventListener('touchend', () => {
+                isDragging = false;
+            });
 
-            // Agregar evento de click a todos los items
+            // Hover pause behavior
+            carousel.addEventListener('mouseenter', () => isHovering = true);
+            carousel.addEventListener('mouseleave', () => {
+                isHovering = false;
+                if (isDragging) {
+                    isDragging = false;
+                    carousel.style.cursor = 'grab';
+                }
+            });
+
+            // Fix click vs drag
+            // Agregar evento de click y hover a todos los items
             track.querySelectorAll('.carousel-item').forEach(item => {
+                applyRandomHoverEffect(item);
+
                 item.addEventListener('click', function (e) {
+                    // Si hubo arrastre significativo, no abrir lightbox
+                    if (Math.abs(velocity) > 2) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        return;
+                    }
                     const img = this.querySelector('img');
                     const caption = this.querySelector('.carousel-caption');
                     if (img && caption) {
                         openLightbox(img.src, img.alt, caption.textContent);
                     }
                 });
-
-                // Prevenir drag de imagen por defecto
+                // Prevenir drag nativo de imagen
                 item.querySelector('img').addEventListener('dragstart', (e) => e.preventDefault());
             });
+
+
+            // -- ANIMATION LOOP --
+            function animate() {
+                if (!isDragging) {
+                    // Si no se arrastra, aplicar velocidad automática
+                    // Si está hover, podríamos pausar o reducir velocidad. CSS original pausaba.
+                    // Vamos a pausar el auto-scroll en hover para facilitar lectura
+                    if (!isHovering) {
+                        currentX += autoSpeed;
+                    } else {
+                        // Opcional: inercia suave si soltaste el drag
+                        currentX += velocity * 0.95; // Fricción
+                        velocity *= 0.95;
+                        if (Math.abs(velocity) < 0.1) velocity = 0;
+                    }
+                } else {
+                    // Mientras arrastra, ya actualizamos currentX en los eventos move
+                }
+
+                // Lógica INFINITA (Wrap around)
+                // Si nos movemos a la izquierda (negativo) y pasamos el set width
+                if (currentX <= -singleSetWidth * 2) {
+                    currentX += singleSetWidth;
+                }
+                // Si nos movemos a la derecha (positivo) y pasamos 0 (o llegamos al inicio visual)
+                if (currentX > 0) {
+                    currentX -= singleSetWidth;
+                }
+
+                track.style.transform = `translateX(${currentX}px)`;
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
         });
     }
 
-    // Función lightbox simple
-    function openLightbox(src, alt, caption) {
-        // Crear overlay si no existe
-        let lightbox = document.getElementById('carousel-lightbox');
-        if (!lightbox) {
-            lightbox = document.createElement('div');
-            lightbox.id = 'carousel-lightbox';
-            lightbox.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.95);
-                z-index: 10000;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-direction: column;
-                padding: 2rem;
-                cursor: pointer;
-            `;
 
-            const img = document.createElement('img');
-            img.style.cssText = `
-                max-width: 90%;
-                max-height: 80vh;
-                object-fit: contain;
-                border-radius: 10px;
-            `;
 
-            const captionEl = document.createElement('div');
-            captionEl.style.cssText = `
-                color: white;
-                font-size: 1.5rem;
-                margin-top: 1rem;
-                font-family: 'Playfair Display', serif;
-                font-weight: 600;
-            `;
-
-            const closeBtn = document.createElement('button');
-            closeBtn.innerHTML = '✕';
-            closeBtn.style.cssText = `
-                position: absolute;
-                top: 2rem;
-                right: 2rem;
-                background: white;
-                border: none;
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
-                font-size: 1.5rem;
-                cursor: pointer;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            `;
-
-            lightbox.appendChild(img);
-            lightbox.appendChild(captionEl);
-            lightbox.appendChild(closeBtn);
-            document.body.appendChild(lightbox);
-
-            // Cerrar al hacer click
-            lightbox.addEventListener('click', function (e) {
-                if (e.target === lightbox || e.target === closeBtn) {
-                    lightbox.style.display = 'none';
-                }
-            });
-        }
-
-        // Mostrar lightbox con la imagen
-        const img = lightbox.querySelector('img');
-        const captionEl = lightbox.querySelectorAll('div')[0];
-        img.src = src;
-        img.alt = alt;
-        captionEl.textContent = caption;
-        lightbox.style.display = 'flex';
-    }
-
-    // Inicializar carruseles
-    initHorizontalCarousels();
+    // Inicializar carruseles cuando todo el contenido (imágenes) esté cargado
+    window.addEventListener('load', () => {
+        initHorizontalCarousels();
+    });
 });
 
 console.log('✨ Tashi Cerámica - Página cargada exitosamente');
@@ -1199,11 +1373,11 @@ console.log('✨ Tashi Cerámica - Página cargada exitosamente');
 
 // Datos de galería
 const galleryData = [
-    { image: 'assets/Imagen19.png', text: 'Botella Colorida' },
+    { image: 'assets/Imagen19.png', text: 'botella zarape' },
     { image: 'assets/Imagen22.png', text: 'Botella Ornamental' },
-    { image: 'assets/imagen24.png', text: 'Botellas Tiki' },
-    { image: 'assets/Imagen25.png', text: 'Botella con Relieve' },
-    { image: 'assets/Imagen26.png', text: 'Botella Calavera' },
+    { image: 'assets/imagen24.png', text: 'Vaso tiki "dragon"' },
+    { image: 'assets/Imagen25.png', text: 'Botella cilindro catacumbas' },
+    { image: 'assets/Imagen26.png', text: 'vaso craneos' },
     { image: 'assets/Imagen27.png', text: 'Botella Premium' },
     { image: 'assets/Imagen32.png', text: 'Botella Azteca' },
     { image: 'assets/Imagen34.png', text: 'Botella Cactus' },
@@ -1212,11 +1386,11 @@ const galleryData = [
     { image: 'assets/imagen4.png', text: 'Botellas Talavera' },
     { image: 'assets/imagen6.png', text: 'Botella Premium' },
     { image: 'assets/imagen7.png', text: 'Botella Circular' },
-    { image: 'assets/imagen8.png', text: 'Botella Talavera' },
-    { image: 'assets/Imagen20.png', text: 'Marco Circular' },
-    { image: 'assets/Imagen29.png', text: 'Vaso Cocktail' },
-    { image: 'assets/Imagen31.png', text: 'Lucha Libre' },
-    { image: 'assets/Imagen33.png', text: 'Día de Muertos' },
+    { image: 'assets/imagen8.png', text: 'Botella sol' },
+    { image: 'assets/Imagen20.png', text: 'Anillo relieve blanco' },
+    { image: 'assets/Imagen29.png', text: 'Vaso tiki "cola de sirena"' },
+    { image: 'assets/Imagen31.png', text: 'botella lucha' },
+    { image: 'assets/Imagen33.png', text: 'Botella fiesta de muertos' },
     { image: 'assets/Imagen36.png', text: 'Marco Agave' },
     { image: 'assets/imagen37.png', text: 'Botella Artesanal' },
     { image: 'assets/imagen39.png', text: 'Set de Vasos' },
@@ -1253,7 +1427,11 @@ function openGalleryModal() {
             <img src="${item.image}" alt="${item.text}">
             <div class="modal-gallery-caption">${item.text}</div>
         `;
-        div.onclick = () => openLightbox(item.image, item.text, item.text);
+        applyRandomHoverEffect(div);
+        div.addEventListener('click', (e) => {
+            e.stopPropagation(); // Evitar que el click se propague
+            openLightbox(item.image, item.text, item.text);
+        });
         grid.appendChild(div);
     });
 
@@ -1279,7 +1457,11 @@ function openClientesModal() {
             <img src="${item.image}" alt="${item.text}">
             <div class="modal-gallery-caption">${item.text}</div>
         `;
-        div.onclick = () => openLightbox(item.image, item.text, item.text);
+        applyRandomHoverEffect(div);
+        div.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openLightbox(item.image, item.text, item.text);
+        });
         grid.appendChild(div);
     });
 
@@ -1298,5 +1480,48 @@ document.addEventListener('click', function (e) {
     if (e.target.classList.contains('modal-overlay')) {
         closeGalleryModal();
         closeClientesModal();
+    }
+});
+
+// ===== PROCESS TIMELINE TOGGLE =====
+document.addEventListener('DOMContentLoaded', () => {
+    const processBtn = document.getElementById('processToggleBtn');
+    const processTimeline = document.getElementById('processTimeline');
+
+    if (processBtn && processTimeline) {
+        processBtn.addEventListener('click', () => {
+            const isCollapsed = processTimeline.classList.contains('timeline-collapsed');
+
+            if (isCollapsed) {
+                // Expandir
+                processTimeline.classList.remove('timeline-collapsed');
+                processTimeline.classList.add('timeline-expanded');
+                processBtn.textContent = 'Ocultar proceso';
+                processBtn.classList.add('active');
+
+                // Trigger scroll animation for elements inside
+                const hiddenItems = processTimeline.querySelectorAll('.scroll-reveal');
+                hiddenItems.forEach(item => {
+                    setTimeout(() => {
+                        item.classList.add('revealed');
+                    }, 300);
+                });
+            } else {
+                // Colapsar
+                processTimeline.classList.remove('timeline-expanded');
+                processTimeline.classList.add('timeline-collapsed');
+                processBtn.textContent = 'Ver proceso completo';
+                processBtn.classList.remove('active');
+
+                // Scroll back to button position if we are way down
+                const btnPosition = processBtn.getBoundingClientRect().top + window.scrollY;
+                if (window.scrollY > btnPosition) {
+                    window.scrollTo({
+                        top: btnPosition - 200,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
     }
 });
