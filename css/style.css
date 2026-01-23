@@ -2406,7 +2406,20 @@ section {
     }
 
     .features-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .feature-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .feature-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .feature-card p {
+        font-size: 0.85rem;
     }
 
     .process-intro {
