@@ -1269,6 +1269,7 @@ section {
     position: relative;
     cursor: pointer;
     transition: transform 0.3s ease;
+    text-align: center;
 }
 
 .carousel-item:hover {
@@ -1374,6 +1375,8 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    align-items: center;
+    text-align: center;
     padding: 2rem;
     color: white;
     opacity: 1;
