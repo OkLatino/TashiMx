@@ -1374,15 +1374,15 @@ console.log('✨ Tashi Cerámica - Página cargada exitosamente');
 // Datos de galería
 const galleryData = [
     { image: 'assets/Imagen19.png', text: 'botella zarape' },
-    { image: 'assets/Imagen22.png', text: 'Botella Ornamental' },
+    { image: 'assets/Imagen22.png', text: 'Botella sol "mandalas"' },
     { image: 'assets/imagen24.png', text: 'Vaso tiki "dragon"' },
     { image: 'assets/Imagen25.png', text: 'Botella cilindro catacumbas' },
     { image: 'assets/Imagen26.png', text: 'vaso craneos' },
     { image: 'assets/Imagen27.png', text: 'Botella Premium' },
     { image: 'assets/Imagen32.png', text: 'Botella Azteca' },
-    { image: 'assets/Imagen34.png', text: 'Botella Cactus' },
-    { image: 'assets/imagen1.jpg', text: 'Botella Artesanal' },
-    { image: 'assets/imagen38.png', text: 'Botella Premium' },
+    { image: 'assets/Imagen34.png', text: 'Anillo relieve blanco con vitral de Agave' },
+    { image: 'assets/imagen1.jpg', text: 'Botella Sol "caballo"' },
+
     { image: 'assets/imagen4.png', text: 'Botellas Talavera' },
     { image: 'assets/imagen6.png', text: 'Botella Premium' },
     { image: 'assets/imagen7.png', text: 'Botella Circular' },
@@ -1391,12 +1391,12 @@ const galleryData = [
     { image: 'assets/Imagen29.png', text: 'Vaso tiki "cola de sirena"' },
     { image: 'assets/Imagen31.png', text: 'botella lucha' },
     { image: 'assets/Imagen33.png', text: 'Botella fiesta de muertos' },
-    { image: 'assets/Imagen36.png', text: 'Marco Agave' },
+    { image: 'assets/Imagen36.png', text: 'Botella sol "Cactus"' },
     { image: 'assets/imagen37.png', text: 'Botella Artesanal' },
     { image: 'assets/imagen39.png', text: 'Set de Vasos' },
-    { image: 'assets/Imagen21.png', text: 'Set Jarra y Vasos' },
-    { image: 'assets/Imagen35.png', text: 'Set Premium' },
-    { image: 'assets/imagen14.png', text: 'Set de Vajilla' }
+
+    { image: 'assets/Imagen35.png', text: 'Pack de Botella anillo relieve azul,tequileros y minis molcajete' },
+    { image: 'assets/imagen14.png', text: 'Jarrito Calavera de Azucar' }
 ];
 
 // Datos de clientes
