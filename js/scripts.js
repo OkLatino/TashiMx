@@ -1373,7 +1373,6 @@ console.log('✨ Tashi Cerámica - Página cargada exitosamente');
 
 // Datos de galería
 const galleryData = [
-    { image: 'assets/anillo_decorado.png', text: 'Anillo Decorado' },
     { image: 'assets/Imagen19.png', text: 'Botella Zarape' },
     { image: 'assets/Imagen22.png', text: 'Botella Sol "Mandalas"' },
     { image: 'assets/imagen24.png', text: 'Vaso Tiki "Dragon"' },
@@ -1392,7 +1391,7 @@ const galleryData = [
     { image: 'assets/Imagen31.png', text: 'Botella Lucha' },
     { image: 'assets/imagen7.png', text: 'Anillo Día De Muertos' },
     { image: 'assets/Imagen36.png', text: 'Botella Sol "Cactus"' },
-    { image: 'assets/imagen37.png', text: 'Botella Artesanal' },
+    { image: 'assets/imagen37.png', text: 'Anillo Decorado' },
     { image: 'assets/imagen39.png', text: 'Set De Vasos' },
 
     { image: 'assets/Imagen35.png', text: 'Pack De Botella Anillo Relieve Azul, Tequileros Y Minis Molcajete' },
