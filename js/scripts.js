@@ -1373,29 +1373,30 @@ console.log('✨ Tashi Cerámica - Página cargada exitosamente');
 
 // Datos de galería
 const galleryData = [
-    { image: 'assets/Imagen19.png', text: 'Botella zarape' },
-    { image: 'assets/Imagen22.png', text: 'Botella sol "mandalas"' },
-    { image: 'assets/imagen24.png', text: 'Vaso tiki "dragon"' },
-    { image: 'assets/Imagen25.png', text: 'Botella cilindro catacumbas' },
-    { image: 'assets/Imagen26.png', text: 'Vaso craneos' },
+    { image: 'assets/anillo_decorado.png', text: 'Anillo Decorado' },
+    { image: 'assets/Imagen19.png', text: 'Botella Zarape' },
+    { image: 'assets/Imagen22.png', text: 'Botella Sol "Mandalas"' },
+    { image: 'assets/imagen24.png', text: 'Vaso Tiki "Dragon"' },
+    { image: 'assets/Imagen25.png', text: 'Botella Cilindro Catacumbas' },
+    { image: 'assets/Imagen26.png', text: 'Vaso Craneos' },
     { image: 'assets/Imagen27.png', text: 'Botella Premium' },
     { image: 'assets/Imagen32.png', text: 'Botella Azteca' },
-    { image: 'assets/Imagen34.png', text: 'Anillo relieve blanco con vitral de Agave' },
-    { image: 'assets/imagen1.jpg', text: 'Botella Sol "caballo"' },
+    { image: 'assets/Imagen34.png', text: 'Anillo Relieve Blanco Con Vitral De Agave' },
+    { image: 'assets/imagen1.jpg', text: 'Botella Sol "Caballo"' },
 
-    { image: 'assets/imagen4.png', text: 'Botellas Talavera' },
+    { image: 'assets/imagen4.png', text: 'Botella Flores' },
     { image: 'assets/imagen6.png', text: 'Taza Leslie' },
-    { image: 'assets/imagen8.png', text: 'Botella sol' },
-    { image: 'assets/Imagen20.png', text: 'Anillo relieve blanco' },
-    { image: 'assets/Imagen29.png', text: 'Vaso tiki "cola de sirena"' },
-    { image: 'assets/Imagen31.png', text: 'Botella lucha' },
-    { image: 'assets/imagen7.png', text: 'Anillo Día de Muertos' },
-    { image: 'assets/Imagen36.png', text: 'Botella sol "Cactus"' },
+    { image: 'assets/imagen8.png', text: 'Botella Sol' },
+    { image: 'assets/Imagen20.png', text: 'Anillo Relieve Blanco' },
+    { image: 'assets/Imagen29.png', text: 'Vaso Tiki "Cola De Sirena"' },
+    { image: 'assets/Imagen31.png', text: 'Botella Lucha' },
+    { image: 'assets/imagen7.png', text: 'Anillo Día De Muertos' },
+    { image: 'assets/Imagen36.png', text: 'Botella Sol "Cactus"' },
     { image: 'assets/imagen37.png', text: 'Botella Artesanal' },
-    { image: 'assets/imagen39.png', text: 'Set de Vasos' },
+    { image: 'assets/imagen39.png', text: 'Set De Vasos' },
 
-    { image: 'assets/Imagen35.png', text: 'Pack de Botella anillo relieve azul,tequileros y minis molcajete' },
-    { image: 'assets/imagen14.png', text: 'Jarrito Calavera de Azúcar' }
+    { image: 'assets/Imagen35.png', text: 'Pack De Botella Anillo Relieve Azul, Tequileros Y Minis Molcajete' },
+    { image: 'assets/imagen14.png', text: 'Jarrito Calavera De Azúcar' }
 ];
 
 // ===== LOGICA DE INTERCAMBIO DE IMAGEN (SWAP) =====
