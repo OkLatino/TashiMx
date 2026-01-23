@@ -262,10 +262,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const updateCounter = () => {
             current += increment;
             if (current < target) {
-                element.textContent = Math.floor(current) + '+';
+                element.textContent = Math.floor(current).toLocaleString() + '+';
                 requestAnimationFrame(updateCounter);
             } else {
-                element.textContent = target + '+';
+                element.textContent = target.toLocaleString() + '+';
             }
         };
 
@@ -1373,31 +1373,54 @@ console.log('✨ Tashi Cerámica - Página cargada exitosamente');
 
 // Datos de galería
 const galleryData = [
-    { image: 'assets/Imagen19.png', text: 'botella zarape' },
+    { image: 'assets/Imagen19.png', text: 'Botella zarape' },
     { image: 'assets/Imagen22.png', text: 'Botella sol "mandalas"' },
     { image: 'assets/imagen24.png', text: 'Vaso tiki "dragon"' },
     { image: 'assets/Imagen25.png', text: 'Botella cilindro catacumbas' },
-    { image: 'assets/Imagen26.png', text: 'vaso craneos' },
+    { image: 'assets/Imagen26.png', text: 'Vaso craneos' },
     { image: 'assets/Imagen27.png', text: 'Botella Premium' },
     { image: 'assets/Imagen32.png', text: 'Botella Azteca' },
     { image: 'assets/Imagen34.png', text: 'Anillo relieve blanco con vitral de Agave' },
     { image: 'assets/imagen1.jpg', text: 'Botella Sol "caballo"' },
 
     { image: 'assets/imagen4.png', text: 'Botellas Talavera' },
-    { image: 'assets/imagen6.png', text: 'Botella Premium' },
-    { image: 'assets/imagen7.png', text: 'Botella Circular' },
+    { image: 'assets/imagen6.png', text: 'Taza Leslie' },
     { image: 'assets/imagen8.png', text: 'Botella sol' },
     { image: 'assets/Imagen20.png', text: 'Anillo relieve blanco' },
     { image: 'assets/Imagen29.png', text: 'Vaso tiki "cola de sirena"' },
-    { image: 'assets/Imagen31.png', text: 'botella lucha' },
-    { image: 'assets/Imagen33.png', text: 'Botella fiesta de muertos' },
+    { image: 'assets/Imagen31.png', text: 'Botella lucha' },
+    { image: 'assets/imagen7.png', text: 'Anillo Día de Muertos' },
     { image: 'assets/Imagen36.png', text: 'Botella sol "Cactus"' },
     { image: 'assets/imagen37.png', text: 'Botella Artesanal' },
     { image: 'assets/imagen39.png', text: 'Set de Vasos' },
 
     { image: 'assets/Imagen35.png', text: 'Pack de Botella anillo relieve azul,tequileros y minis molcajete' },
-    { image: 'assets/imagen14.png', text: 'Jarrito Calavera de Azucar' }
+    { image: 'assets/imagen14.png', text: 'Jarrito Calavera de Azúcar' }
 ];
+
+// ===== LOGICA DE INTERCAMBIO DE IMAGEN (SWAP) =====
+document.addEventListener('click', function (e) {
+    if (e.target.classList.contains('swappable-image')) {
+        // Detener propagación para que NO se abra el Lightbox
+        e.stopPropagation();
+        e.preventDefault();
+
+        const img = e.target;
+        const currentSrc = img.src;
+        const altSrc = img.getAttribute('data-alt-src');
+
+        if (altSrc) {
+            // Efecto de opacidad para transición suave
+            img.style.opacity = '0.5';
+
+            setTimeout(() => {
+                img.src = altSrc;
+                img.setAttribute('data-alt-src', currentSrc);
+                img.style.opacity = '1';
+            }, 150);
+        }
+    }
+}, true); // Use Capture para interceptar antes que el listener del carrusel
 
 // Datos de clientes
 const clientesData = [
